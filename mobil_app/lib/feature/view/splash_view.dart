@@ -11,6 +11,17 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginView()),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
@@ -50,47 +61,6 @@ class _SplashViewState extends State<SplashView> {
                     textAlign: TextAlign.center,
                   ),
                 ],
-              ),
-
-              // Buton
-              GestureDetector(
-                onTap: () {
-                  // burayi pushReplacement kullanmamiz gerek
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginView()));
-                },
-                child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(
-                    vertical: myHeight * 0.02,
-                  ),
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(105, 195, 137, 1),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Login',
-                        style: TextStyle(
-                          fontSize: myHeight * 0.025,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(width: myWidth * 0.03),
-                      RotationTransition(
-                        turns: const AlwaysStoppedAnimation(310 / 360),
-                        child: Icon(
-                          Icons.arrow_forward_rounded,
-                          size: myHeight * 0.03,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ),
             ],
           ),
