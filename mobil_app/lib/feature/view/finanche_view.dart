@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_app/product/utilitiy/extensions/context_extension.dart';
 
 class FinancheView extends StatefulWidget {
   const FinancheView({super.key});
@@ -10,16 +11,14 @@ class FinancheView extends StatefulWidget {
 class _FinancheViewState extends State<FinancheView> {
   @override
   Widget build(BuildContext context) {
-    double myHeight = MediaQuery.of(context).size.height;
-    double myWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text("Finanche page"),
         ),
         body: Container(
-          height: myHeight,
-          width: myWidth,
+          height: context.height,
+          width: context.width,
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -32,8 +31,8 @@ class _FinancheViewState extends State<FinancheView> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                height: myHeight * 0.7,
-                width: myWidth,
+                height: context.height * 0.6,
+                width: context.width,
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(

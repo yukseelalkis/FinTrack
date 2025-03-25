@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/view/finanche_view.dart';
-import 'package:mobil_app/feature/view/splash_view.dart';
-import 'package:mobil_app/feature/view/widget/nav_bar.dart';
+import 'package:mobil_app/feature/view/home_view.dart';
 import 'package:mobil_app/product/theme/ligth_theme.dart';
 
 void main() {
@@ -13,10 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
             appBarTheme: const AppBarTheme(centerTitle: true)),
-        home: FinancheView());
+        home: const HomeView());
   }
 }

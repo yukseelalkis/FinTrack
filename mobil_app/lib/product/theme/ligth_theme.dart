@@ -5,6 +5,6 @@ class LigthTheme {
   LigthTheme() {
     theme = ThemeData(
         scaffoldBackgroundColor: Colors.amber,
-        appBarTheme: AppBarTheme(centerTitle: true));
+        appBarTheme: const AppBarTheme(centerTitle: true));
   }
 }

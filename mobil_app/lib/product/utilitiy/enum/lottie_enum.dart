@@ -1,0 +1,1 @@
+enum LottieItems { splash, login }
