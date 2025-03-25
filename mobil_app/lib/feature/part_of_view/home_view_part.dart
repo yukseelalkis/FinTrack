@@ -37,7 +37,7 @@ class _MyTabbar extends StatelessWidget {
       child: TabBar(
         controller: _tabController,
         indicatorColor: AppColors.primaryColor,
-        labelColor: AppColors.secondaryColor,
+        labelColor: AppColors.peachColor,
         unselectedLabelColor: AppColors.greyColor,
         labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
         tabs: _MyTabViewPage.values.map((tab) {

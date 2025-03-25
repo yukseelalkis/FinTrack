@@ -3,10 +3,18 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  static const Color primaryColor = Color.fromRGBO(245, 106, 72, 1);
-  static const Color secondaryColor = Color.fromRGBO(245, 200, 100, 1);
+  static const Color primaryColor = Color(0xFFF56A48); // #f56a48 - (245,106,72)
+  static const Color greenColor = Color(0xFF69C389); // #69c389 - (105,195,137)
+  static const Color darkColor = Color(0xFF111822); // #111822 - (17,24,34)
+  static const Color peachColor = Color(0xFFFBD4B1); // #fbd4b1 - (251,212,177)
+  static const Color blueColor = Color(0xFF2972B6); // #2972b6 - (41,114,182)
+
+  // Diğer sabit renkler
   static const Color backgroundColor = Color(0xFFFFFFFF);
   static const Color textColor = Color(0xFF333333);
   static const Color greyColor = Colors.grey;
   static const Color transparent = Colors.transparent;
+  static const Color errorColor = Colors.red;
+  static const Color doneColor = Colors.green;
+  static const Color whiteColor = Colors.white;
 }
