@@ -1,4 +1,4 @@
-part of 'fee_view.dart';
+part of '../view/fee_view.dart';
 
 class _CrediCardWidget extends StatelessWidget {
   const _CrediCardWidget({

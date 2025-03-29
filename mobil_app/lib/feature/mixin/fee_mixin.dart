@@ -14,7 +14,7 @@ mixin FeeMixin on State<FeeView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
 
-  // 
+  
   void onCreditCardModelChange(CreditCardModel creditCardModel) {
     setState(() {
       cardNumber = creditCardModel.cardNumber;

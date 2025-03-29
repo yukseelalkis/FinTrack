@@ -7,40 +7,44 @@ class LightTheme {
 
   LightTheme() {
     theme = ThemeData(
-      scaffoldBackgroundColor: AppColors.backgroundColor,
+        scaffoldBackgroundColor: AppColors.backgroundColor,
 
-      /// AppBar Ayarları
-      appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.backgroundColor,
-        centerTitle: true,
-        elevation: 0,
-        titleTextStyle: TextStyle(
-          color: AppColors.darkColor,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        /// AppBar Ayarları
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.backgroundColor,
+          centerTitle: true,
+          elevation: 0,
+          titleTextStyle: TextStyle(
+            color: AppColors.darkColor,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          iconTheme: IconThemeData(color: AppColors.darkColor),
         ),
-        iconTheme: IconThemeData(color: AppColors.darkColor),
-      ),
 
-      /// Global TextTheme
-      textTheme: AppStyles.textTheme, // ✅ Text Theme bağlandı
+        /// Global TextTheme
+        textTheme: AppStyles.textTheme, // ✅ Text Theme bağlandı
 
-      /// Global ElevatedButtonTheme
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: AppStyles.elevatedButtonStyle, // ✅ Buton rengi peach
-      ),
-
-      /// InputDecoration (TextField) Ayarları
-      inputDecorationTheme: const InputDecorationTheme(
-        labelStyle: TextStyle(color: AppColors.darkColor),
-        hintStyle: TextStyle(color: AppColors.greenColor),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.greenColor),
+        /// Global ElevatedButtonTheme
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: AppStyles.elevatedButtonStyle, // ✅ Buton rengi peach
         ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.greenColor),
+
+        /// InputDecoration (TextField) Ayarları
+        inputDecorationTheme: const InputDecorationTheme(
+          labelStyle: TextStyle(color: AppColors.darkColor),
+          hintStyle: TextStyle(color: AppColors.greenColor),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.greenColor),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.greenColor),
+          ),
         ),
-      ),
-    );
+        tabBarTheme: const TabBarTheme(
+          indicatorColor: AppColors.primaryColor,
+          labelColor: AppColors.primaryColor,
+          unselectedLabelColor: AppColors.darkColor,
+        ));
   }
 }

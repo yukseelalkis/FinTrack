@@ -13,7 +13,7 @@ class AppStyles {
   static const InputConfiguration creditCardInputDecoration =
       InputConfiguration(
     cardNumberDecoration: InputDecoration(
-      labelText: ProjectItemsString.cardName,
+      labelText: ProjectItemsString.cardNumber,
       labelStyle: TextStyle(
         fontWeight: FontWeight.bold,
       ),
@@ -82,4 +82,15 @@ class AppStyles {
     ),
     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
   );
+// financher
+
+  static const BoxDecoration backRoundDecoration = BoxDecoration(
+      gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppColors.primaryColor, AppColors.peachColor]));
+  static const BoxDecoration frontRoundDecoration = BoxDecoration(
+      color: AppColors.whiteColor,
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(60), topRight: Radius.circular(60)));
 }

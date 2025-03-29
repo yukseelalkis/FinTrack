@@ -23,8 +23,8 @@ class _BottomNavBarWidgetState extends State<_BottomNavBarWidget> {
   }
 }
 
-class _MyTabbar extends StatelessWidget {
-  const _MyTabbar({required TabController tabController})
+class MyTabbar extends StatelessWidget with _TabBarMixin {
+  const MyTabbar({required TabController tabController})
       : _tabController = tabController;
 
   final TabController _tabController;
@@ -34,33 +34,18 @@ class _MyTabbar extends StatelessWidget {
     return Container(
       decoration: AppStyles.tabBarDecoration,
       padding: const PagePadding.tabbar(),
-      child: TabBar(
-        controller: _tabController,
-        indicatorColor: AppColors.primaryColor,
-        labelColor: AppColors.peachColor,
-        unselectedLabelColor: AppColors.greyColor,
-        labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-        tabs: _MyTabViewPage.values.map((tab) {
-          return Tab(
-            icon: Icon(tabIcons[tab]),
-            text: tabTitles[tab],
-          );
-        }).toList(),
-      ),
+      child: TabBar(controller: _tabController, tabs: buildTabItems()),
     );
   }
 }
 
-enum _MyTabViewPage { Finanche, Crypto, Card }
-
-final Map<_MyTabViewPage, IconData> tabIcons = {
-  _MyTabViewPage.Finanche: Icons.account_balance_wallet_outlined,
-  _MyTabViewPage.Crypto: Icons.currency_bitcoin,
-  _MyTabViewPage.Card: Icons.credit_card,
-};
-
-final Map<_MyTabViewPage, String> tabTitles = {
-  _MyTabViewPage.Finanche: 'Finance',
-  _MyTabViewPage.Crypto: 'Crypto',
-  _MyTabViewPage.Card: 'Card',
-};
+mixin _TabBarMixin  {
+  List<Tab> buildTabItems() {
+    return MyTabViewPage.values.map((tab) {
+      return Tab(
+        icon: Icon(tabIcons[tab]),
+        text: tabTitles[tab],
+      );
+    }).toList();
+  }
+}

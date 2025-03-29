@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_app/feature/mixin/splash_mixin.dart';
 import 'package:mobil_app/product/init/language/project_items_string.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/enum/lottie_enum.dart';
@@ -14,7 +15,7 @@ class SplashView extends StatefulWidget {
   State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplashViewState extends State<SplashView> with SplashMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

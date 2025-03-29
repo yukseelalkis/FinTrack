@@ -15,4 +15,5 @@ class ProjectItemsString {
   static const cvvNameHint = 'xxx';
   static const cardName = 'Kart Sahibi';
   static const cardNameHint = 'Ad Soyad';
+  
 }

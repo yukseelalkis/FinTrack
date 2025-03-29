@@ -6,7 +6,7 @@ import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_style.dart';
 
-part 'fee_view_part.dart';
+part '../part_of_view/fee_view_part.dart';
 
 class FeeView extends StatefulWidget {
   const FeeView({super.key});

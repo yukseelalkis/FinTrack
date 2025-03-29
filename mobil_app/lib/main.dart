@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobil_app/feature/view/fee_view.dart';
+import 'package:mobil_app/feature/view/finanche_view.dart';
 import 'package:mobil_app/feature/view/home_view.dart';
+import 'package:mobil_app/feature/view/splash_view.dart';
 import 'package:mobil_app/product/theme/ligth_theme.dart';
 
 void main() {
@@ -13,8 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
         theme: _lightTheme.theme,
-        home: const HomeView());
+        home: const FinancheView());
   }
 }
