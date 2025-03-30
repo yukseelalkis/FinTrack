@@ -17,4 +17,11 @@ class AppColors {
   static const Color errorColor = Colors.red;
   static const Color doneColor = Colors.green;
   static const Color whiteColor = Colors.white;
+  static final Color whiteOpacityColor = Colors.white.withOpacity(0.5);
+  static final Color borderCardColor = Colors.grey.shade200;
+  static final Color addCardBorderColor = Colors.grey.shade300;
+  static final Color cryptoCardShadow = Colors.grey.shade100;
+  //Colors.grey.shade200,
 }
+
+// /Colors.grey.shade100,

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/view/fee_view.dart';
 import 'package:mobil_app/feature/view/finanche_view.dart';
-import 'package:mobil_app/feature/view/home_view.dart';
-import 'package:mobil_app/feature/view/splash_view.dart';
 import 'package:mobil_app/product/theme/ligth_theme.dart';
 
 void main() {

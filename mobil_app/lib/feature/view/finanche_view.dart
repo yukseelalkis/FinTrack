@@ -1,8 +1,16 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:mobil_app/feature/model/coinModel.dart';
+import 'package:mobil_app/feature/model/stockModel.dart';
+import 'package:mobil_app/feature/service/coin_service.dart';
+import 'package:mobil_app/feature/service/stock_service.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_style.dart';
+import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
 import 'package:mobil_app/product/utilitiy/extensions/context_extension.dart';
+
+part 'finanche_mixin.dart';
 
 class FinancheView extends StatefulWidget {
   const FinancheView({super.key});
@@ -12,10 +20,41 @@ class FinancheView extends StatefulWidget {
 }
 
 class _FinancheViewState extends State<FinancheView> {
+  List<StockModel>? _stockItems;
+  List<CoinModel>? _coinItems;
+  late final StockService _stockService;
+  late final CoinService _coinService;
+  late final Dio _dio;
+  @override
+  void initState() {
+    _dio = Dio(BaseOptions(baseUrl: ServicePath.baseUrl.path));
+    super.initState();
+    _stockService = StockService(_dio);
+    _coinService = CoinService(_dio);
+    fetchPopulerStock();
+    fetchPopulerCoin();
+  }
+
+  // view model ile ayiracazgimiz kisim olacak
+  Future<void> fetchPopulerStock() async {
+    final fetchPopItems =
+        await _stockService.fetchPopularStocks(ServicePath.stockPopuler.path);
+    setState(() {
+      _stockItems = fetchPopItems;
+    });
+  }
+
+  Future<void> fetchPopulerCoin() async {
+    final fetchPopItems =
+        await _coinService.fetchPopularCoin(ServicePath.coinPopuler.path);
+    setState(() {
+      _coinItems = fetchPopItems;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Container(
         width: context.width,
         height: context.height,
@@ -23,25 +62,18 @@ class _FinancheViewState extends State<FinancheView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Üst Bilgi
             Padding(
-              padding: const EdgeInsets.all(11.0),
+              padding: const PagePadding.xsll(),
               child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.width * 0.02,
-                  vertical: context.height * 0.005,
-                ),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                    color: AppColors.whiteOpacityColor,
+                    borderRadius: AppStyles.borderRadius),
                 child: const Text(
                   'Main portfolio',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-
             const Padding(
               padding: PagePadding.all(),
               child: Text(
@@ -53,82 +85,19 @@ class _FinancheViewState extends State<FinancheView> {
                 ),
               ),
             ),
-
-            /// Alt Alan
             Expanded(
               child: Container(
                 width: context.width,
                 decoration: AppStyles.frontRoundDecoration,
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(10),
+                  padding: const PagePadding.xsll(),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.add)),
-                      ),
-
-                      /// Hisse Listesi
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0),
-                            child: ListTile(
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 8.0, vertical: 4.0),
-                              leading: CircleAvatar(
-                                radius: 18,
-                                backgroundColor: Colors.deepPurple.shade100,
-                                child: const Text(
-                                  'AAPL',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.deepPurple,
-                                    fontSize: 10,
-                                  ),
-                                ),
-                              ),
-                              title: const Text(
-                                'Apple Inc.',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              subtitle: const Text(
-                                'Technology Company',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 11,
-                                ),
-                              ),
-                              trailing: const Text(
-                                '\$22,993.00',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.green,
-                                  fontSize: 13,
-                                ),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              tileColor: Colors.white,
-                              dense: true,
-                              visualDensity: VisualDensity.compact,
-                            ),
-                          );
-                        },
-                      ),
-
+                      const _AddStockButton(),
+                      const Text('Populer'),
+                      _ListTile(items: _stockItems),
                       const SizedBox(height: 20),
-
                       const Text(
                         'Crypto Para Piyasası',
                         style: TextStyle(
@@ -136,73 +105,8 @@ class _FinancheViewState extends State<FinancheView> {
                           fontSize: 16,
                         ),
                       ),
-
-                      const SizedBox(height: 8),
-
-                      SizedBox(
-                        height: 130,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            /// Bitcoin
-                            _cryptoCard(
-                              name: 'Bitcoin',
-                              price: '\$67.02',
-                              change: '+0.44%',
-                              icon: Icons.currency_bitcoin,
-                              iconColor: Colors.orange,
-                              bgColor: Colors.orange.shade100,
-                              changeColor: Colors.green,
-                            ),
-
-                            /// Ethereum
-                            _cryptoCard(
-                              name: 'Ethereum',
-                              price: '\$1822.21',
-                              change: '+1.61%',
-                              icon: Icons.token,
-                              iconColor: Colors.purple,
-                              bgColor: Colors.purple.shade100,
-                              changeColor: Colors.green,
-                            ),
-
-                            /// Tether
-                            _cryptoCard(
-                              name: 'Tether',
-                              price: '\$1.00',
-                              change: '-0.01%',
-                              icon: Icons.attach_money,
-                              iconColor: Colors.teal,
-                              bgColor: Colors.teal.shade100,
-                              changeColor: Colors.red,
-                            ),
-
-                            /// + Ekle Butonu
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
-                              child: InkWell(
-                                onTap: () {
-                                  // işlem burada yapılabilir
-                                },
-                                child: Container(
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade200,
-                                    borderRadius: BorderRadius.circular(12),
-                                    border:
-                                        Border.all(color: Colors.grey.shade300),
-                                  ),
-                                  child: const Center(
-                                    child: Icon(Icons.add,
-                                        size: 30, color: Colors.grey),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // card
+                      _CardListBuilder(coinItems: _coinItems)
                     ],
                   ),
                 ),
@@ -213,66 +117,75 @@ class _FinancheViewState extends State<FinancheView> {
       ),
     );
   }
+}
 
-  /// Kart yapısı
-  Widget _cryptoCard({
-    required String name,
-    required String price,
-    required String change,
-    required IconData icon,
-    required Color iconColor,
-    required Color bgColor,
-    required Color changeColor,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Container(
-        width: 100,
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey.shade200),
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade100,
-              blurRadius: 5,
-              offset: const Offset(0, 2),
-            )
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              backgroundColor: bgColor,
-              child: Icon(icon, color: iconColor),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              name.toLowerCase(),
+/// disari cikaracz
+class _ListTile extends StatelessWidget {
+  const _ListTile({
+    required List<StockModel>? items,
+  }) : _items = items;
+
+  final List<StockModel>? _items;
+
+  @override
+  Widget build(BuildContext context) {
+    if (_items == null || _items.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      // ! kaldirdim
+      itemCount: _items.length,
+      itemBuilder: (context, index) {
+        // ! kaldirdim
+        final stock = _items[index];
+        return ListTile(
+          contentPadding: const PagePadding.listTilePadding(),
+          leading: CircleAvatar(
+            radius: AppStyles.listTileRadius,
+            backgroundColor: AppColors.peachColor,
+            child: Text(
+              stock.symbol.toUpperCase(),
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 13,
+                color: AppColors.primaryColor,
+                fontSize: 10,
               ),
             ),
-            Text(
-              price,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
-              ),
+          ),
+          title: Text(
+            stock.companyName,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 13,
+              color: Colors.black,
             ),
-            Text(
-              change,
-              style: TextStyle(
-                fontSize: 12,
-                color: changeColor,
-              ),
+          ),
+          subtitle: Text(
+            stock.industry,
+            style: const TextStyle(
+              color: AppColors.greyColor,
+              fontSize: 11,
             ),
-          ],
-        ),
-      ),
+          ),
+          trailing: Text(
+            '\$${stock.purchase.toStringAsFixed(2)}',
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+              color: AppColors.greenColor,
+              fontSize: 13,
+            ),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          tileColor: Colors.white,
+          dense: true,
+          visualDensity: VisualDensity.compact,
+        );
+      },
     );
   }
 }

@@ -6,6 +6,18 @@ import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 class AppStyles {
   AppStyles._(); // new'lenmesin diye private constructor
 
+  // sabitler
+
+  static const double cardWidth = 100;
+  static const double addCardIcon = 30;
+  static const double cardSizedBox = 130;
+  static const double cryptoCardContainer = 100;
+  static const double blur = 5;
+  static const double radius = 15;
+  static const double listTileRadius = 18;
+  static const Offset ofset = Offset(0, 2);
+  static final BorderRadius borderRadius = BorderRadius.circular(10);
+
   static final BoxDecoration tabBarDecoration = BoxDecoration(
     color: AppColors.whiteColor,
     borderRadius: BorderRadius.circular(25),
@@ -82,7 +94,9 @@ class AppStyles {
     ),
     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
   );
-// financher
+
+  static final Border addBorder =
+      Border.all(color: AppColors.addCardBorderColor);
 
   static const BoxDecoration backRoundDecoration = BoxDecoration(
       gradient: LinearGradient(
@@ -93,4 +107,21 @@ class AppStyles {
       color: AppColors.whiteColor,
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(60), topRight: Radius.circular(60)));
+
+  static final BoxDecoration cryptoCardBorder = BoxDecoration(
+    color: AppColors.whiteColor,
+    border: Border.all(color: AppColors.borderCardColor),
+    borderRadius: AppStyles.borderRadius,
+    boxShadow: [
+      BoxShadow(
+          color: AppColors.cryptoCardShadow,
+          blurRadius: AppStyles.blur,
+          offset: AppStyles.ofset)
+    ],
+  );
+
+  static final BoxDecoration addButtonDecoration = BoxDecoration(
+      color: AppColors.borderCardColor,
+      borderRadius: AppStyles.borderRadius,
+      border: AppStyles.addBorder);
 }

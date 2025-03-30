@@ -10,6 +10,7 @@ dependencies:
   lottie: ^3.2.0
   animate_do: ^4.2.0
   flutter_credit_card: ^4.1.0
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:
