@@ -137,5 +137,3 @@ class _AddStockButton extends StatelessWidget {
     );
   }
 }
-
-

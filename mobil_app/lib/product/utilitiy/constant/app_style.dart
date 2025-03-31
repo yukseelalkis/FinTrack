@@ -124,4 +124,6 @@ class AppStyles {
       color: AppColors.borderCardColor,
       borderRadius: AppStyles.borderRadius,
       border: AppStyles.addBorder);
+  static final ShapeBorder listTileBorder =
+      RoundedRectangleBorder(borderRadius: borderRadius);
 }

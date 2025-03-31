@@ -1,6 +1,6 @@
-//abstract class StateLearnViewModel extends State<stateManageLearn> {
-
+// VIEW MODEL
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 import 'package:mobil_app/feature/model/coinModel.dart';
 import 'package:mobil_app/feature/model/stockModel.dart';
 import 'package:mobil_app/feature/service/coin_service.dart';
@@ -11,11 +11,24 @@ import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
 abstract class FinancheViewModel extends State<FinancheView> {
   List<StockModel>? stockItems;
   List<CoinModel>? coinItems;
-  late final StockService _stockService;
-  late final CoinService _coinService;
+
+  late final StockService stockService;
+  late final CoinService coinService;
+  late final Dio dio;
+
+  @override
+  void initState() {
+    super.initState();
+    dio = Dio(BaseOptions(baseUrl: ServicePath.baseUrl.path));
+    stockService = StockService(dio);
+    coinService = CoinService(dio);
+    fetchPopulerStock();
+    fetchPopulerCoin();
+  }
+
   Future<void> fetchPopulerStock() async {
     final fetchPopItems =
-        await _stockService.fetchPopularStocks(ServicePath.stockPopuler.path);
+        await stockService.fetchPopularStocks(ServicePath.stockPopuler.path);
     setState(() {
       stockItems = fetchPopItems;
     });
@@ -23,7 +36,7 @@ abstract class FinancheViewModel extends State<FinancheView> {
 
   Future<void> fetchPopulerCoin() async {
     final fetchPopItems =
-        await _coinService.fetchPopularCoin(ServicePath.coinPopuler.path);
+        await coinService.fetchPopularCoin(ServicePath.coinPopuler.path);
     setState(() {
       coinItems = fetchPopItems;
     });
