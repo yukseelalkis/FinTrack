@@ -1,3 +1,6 @@
+///////// View modele kaydiracaz
+///
+
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:mobil_app/feature/view/fee_view.dart';
@@ -13,8 +16,6 @@ mixin FeeMixin on State<FeeView> {
   bool isCvvFocused = false;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-
-  
   void onCreditCardModelChange(CreditCardModel creditCardModel) {
     setState(() {
       cardNumber = creditCardModel.cardNumber;

@@ -15,5 +15,14 @@ class ProjectItemsString {
   static const cvvNameHint = 'xxx';
   static const cardName = 'Kart Sahibi';
   static const cardNameHint = 'Ad Soyad';
-  
+  static const loginText = 'Login';
+  static const welcomeBack = 'Welcome Back';
+  static const emailHintText = 'Email or Phone';
+  static const passwordHintText = 'Password';
+  static const fotgotPassword = 'Forgot Password?';
+  static const register = 'Register';
+  static const portfolio = 'Main portfolio';
+  static const money = '\$ 7,466.20';
+  static const populer = 'Populer';
+  static const cryptoText = 'Crypto Para Piyasası';
 }

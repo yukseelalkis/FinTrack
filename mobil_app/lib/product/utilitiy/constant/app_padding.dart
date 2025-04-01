@@ -9,6 +9,10 @@ class PagePadding extends EdgeInsets {
   const PagePadding.xOnlyTop() : super.only(top: 4);
   const PagePadding.horizontal() : super.symmetric(horizontal: 8);
   const PagePadding.topxs() : super.only(top: 8);
+  const PagePadding.bottomXL() : super.only(bottom: 80);
+  const PagePadding.loginHeaderColumn() : super.symmetric(horizontal: 25);
+  const PagePadding.loginTextField()
+      : super.symmetric(horizontal: 20, vertical: 30);
 
   /// Splash özel padding
   static EdgeInsets splashSymmetric(BuildContext context) =>
@@ -16,5 +20,4 @@ class PagePadding extends EdgeInsets {
           horizontal: MediaQuery.of(context).size.width * 0.08);
 }
 
-// /const EdgeInsets.all(10),
-//const EdgeInsets.symmetric(horizontal: 8.0),
+// const EdgeInsets.symmetric(horizontal: 20, vertical: 30),

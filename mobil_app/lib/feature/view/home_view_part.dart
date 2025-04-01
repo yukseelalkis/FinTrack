@@ -1,6 +1,52 @@
-part of 'finanche_view.dart';
+part of 'home_view.dart';
 
-////// sirali card
+class _HeaderWithAddButton extends StatelessWidget {
+  const _HeaderWithAddButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(ProjectItemsString.populer,
+            style: Theme.of(context).textTheme.titleMedium),
+        const _AddStockButton(),
+      ],
+    );
+  }
+}
+
+class _Header extends StatelessWidget {
+  const _Header({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const PagePadding.xsll(),
+          child: Container(
+            decoration: AppStyles.homeDecoration,
+            child: Text(
+              ProjectItemsString.portfolio,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const PagePadding.all(),
+          child: Text(ProjectItemsString.money,
+              style: Theme.of(context).textTheme.headlineLarge),
+        ),
+      ],
+    );
+  }
+}
 
 class _CardListBuilder extends StatelessWidget {
   const _CardListBuilder({
@@ -24,7 +70,6 @@ class _CardListBuilder extends StatelessWidget {
               // + butonu
               return Padding(
                 padding: const PagePadding.horizontal(),
-                // ADD CARD
                 child: InkWell(
                   onTap: () {
                     // Butona tıklanınca yapılacaklar

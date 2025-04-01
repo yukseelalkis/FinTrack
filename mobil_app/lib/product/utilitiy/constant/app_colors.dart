@@ -8,9 +8,11 @@ class AppColors {
   static const Color darkColor = Color(0xFF111822); // #111822 - (17,24,34)
   static const Color peachColor = Color(0xFFFBD4B1); // #fbd4b1 - (251,212,177)
   static const Color blueColor = Color(0xFF2972B6); // #2972b6 - (41,114,182)
-
+  static const Color blueInputColor = Color.fromARGB(255, 30, 92, 148);
   // Diğer sabit renkler
-  static const Color backgroundColor = Color(0xFFFFFFFF);
+  /// backroundColor white yapabiliriz bakacaz
+  static const Color backgroundColor =
+      Color(0xFF2972B6); // #2972b6 - (41,114,182)
   static const Color textColor = Color(0xFF333333);
   static const Color greyColor = Colors.grey;
   static const Color transparent = Colors.transparent;
@@ -21,7 +23,16 @@ class AppColors {
   static final Color borderCardColor = Colors.grey.shade200;
   static final Color addCardBorderColor = Colors.grey.shade300;
   static final Color cryptoCardShadow = Colors.grey.shade100;
-  //Colors.grey.shade200,
+
+  static const LinearGradient backgroundGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFF1E5C94), // (30, 92, 148)
+      Color(0xFF2972B6), // (41, 114, 182)
+      Color.fromARGB(255, 122, 182, 235), // (92, 155, 210)
+    ],
+  );
 }
 
 // /Colors.grey.shade100,

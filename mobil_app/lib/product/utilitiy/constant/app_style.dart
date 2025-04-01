@@ -17,6 +17,11 @@ class AppStyles {
   static const double listTileRadius = 18;
   static const Offset ofset = Offset(0, 2);
   static final BorderRadius borderRadius = BorderRadius.circular(10);
+  static final BorderRadius borderRadius3xl = BorderRadius.circular(30);
+  static const double loginIconSize = 62;
+
+  static final BoxDecoration loginDecoration =
+      BoxDecoration(color: Colors.white, borderRadius: borderRadius3xl);
 
   static final BoxDecoration tabBarDecoration = BoxDecoration(
     color: AppColors.whiteColor,
@@ -68,19 +73,6 @@ class AppStyles {
     ),
   );
 
-  /// Global TextTheme
-  static const TextTheme textTheme = TextTheme(
-    bodyMedium: TextStyle(
-      color: AppColors.darkColor,
-      fontSize: 16,
-    ),
-    labelLarge: TextStyle(
-      color: AppColors.darkColor,
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
-    ),
-  );
-
   /// Global ElevatedButton Style
   static final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
     backgroundColor: AppColors.peachColor, // Buton arka plan
@@ -126,4 +118,22 @@ class AppStyles {
       border: AppStyles.addBorder);
   static final ShapeBorder listTileBorder =
       RoundedRectangleBorder(borderRadius: borderRadius);
+
+  static const BoxDecoration backgroundGradientBox = BoxDecoration(
+    gradient: AppColors.backgroundGradient,
+  );
+  static OutlineInputBorder outlineBorder({double width = 1.5}) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(16),
+      borderSide: BorderSide(
+        color: const Color.fromARGB(255, 30, 92, 148),
+        width: width,
+      ),
+    );
+  }
+
+  static final BoxDecoration homeDecoration = BoxDecoration(
+      color: AppColors.whiteOpacityColor, borderRadius: AppStyles.borderRadius);
+  static final RoundedRectangleBorder elevantedButtonBorder =
+      RoundedRectangleBorder(borderRadius: borderRadius3xl);
 }

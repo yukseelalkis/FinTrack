@@ -5,10 +5,10 @@ import 'package:mobil_app/feature/model/coinModel.dart';
 import 'package:mobil_app/feature/model/stockModel.dart';
 import 'package:mobil_app/feature/service/coin_service.dart';
 import 'package:mobil_app/feature/service/stock_service.dart';
-import 'package:mobil_app/feature/view/finanche_view.dart';
+import 'package:mobil_app/feature/view/home_view.dart';
 import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
 
-abstract class FinancheViewModel extends State<FinancheView> {
+abstract class HomeViewModel extends State<HomeView> {
   List<StockModel>? stockItems;
   List<CoinModel>? coinItems;
 

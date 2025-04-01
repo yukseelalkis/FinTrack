@@ -1,5 +1,6 @@
 part of '../view/splash_view.dart';
 
+/// Sayfadaki Splash gorunum m
 class _Header extends StatelessWidget {
   const _Header({
     super.key,
@@ -14,6 +15,7 @@ class _Header extends StatelessWidget {
   }
 }
 
+/// textlerim
 class _TextColumn extends StatelessWidget {
   const _TextColumn({
     super.key,
@@ -21,25 +23,25 @@ class _TextColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          ProjectItemsString.splashTitle,
-          style: TextStyle(
-            fontSize: context.height * 0.045,
-            fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const PagePadding.bottomXL(),
+      child: Column(
+        children: [
+          Text(
+            ProjectItemsString.splashTitle,
+            style: Theme.of(context).textTheme.headlineMedium,
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(height: context.height * 0.015),
-        Text(
-          ProjectItemsString.splashSub,
-          style: TextStyle(
-            fontSize: context.height * 0.025,
+          SizedBox(height: context.height * 0.025),
+          Text(
+            ProjectItemsString.splashSub,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  fontSize: context.height * 0.025,
+                ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
