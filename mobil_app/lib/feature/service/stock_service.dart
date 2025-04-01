@@ -7,13 +7,13 @@ import 'package:mobil_app/feature/model/stockModel.dart';
 abstract class IStockService {
   final Dio dio;
   IStockService(this.dio);
-  Future<List<StockModel>?> fetchPopularStocks(String path);
+  Future<List<StockModel>?> fetchStocks(String path);
 }
 
 class StockService extends IStockService {
   StockService(super.dio);
   @override
-  Future<List<StockModel>?> fetchPopularStocks(String path) async {
+  Future<List<StockModel>?> fetchStocks(String path) async {
     try {
       final response = await dio.get(path);
       if (response.statusCode == HttpStatus.ok) {

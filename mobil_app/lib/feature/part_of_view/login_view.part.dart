@@ -1,4 +1,4 @@
-part of 'login_view.dart';
+part of '../view/login_view.dart';
 
 class _Header extends StatelessWidget {
   const _Header({

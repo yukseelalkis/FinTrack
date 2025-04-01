@@ -28,7 +28,7 @@ abstract class HomeViewModel extends State<HomeView> {
 
   Future<void> fetchPopulerStock() async {
     final fetchPopItems =
-        await stockService.fetchPopularStocks(ServicePath.stockPopuler.path);
+        await stockService.fetchStocks(ServicePath.stockPopuler.path);
     setState(() {
       stockItems = fetchPopItems;
     });

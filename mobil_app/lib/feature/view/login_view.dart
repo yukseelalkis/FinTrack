@@ -9,7 +9,7 @@ import 'package:mobil_app/product/utilitiy/duration/app_duration.dart';
 import 'package:mobil_app/product/widget/custom_gesture.dart';
 import 'package:mobil_app/product/widget/custom_textField.dart';
 
-part 'login_view.part.dart';
+part '../part_of_view/login_view.part.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

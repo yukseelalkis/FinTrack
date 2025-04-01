@@ -1,4 +1,4 @@
-part of 'home_view.dart';
+part of '../view/home_view.dart';
 
 class _HeaderWithAddButton extends StatelessWidget {
   const _HeaderWithAddButton({
@@ -72,8 +72,7 @@ class _CardListBuilder extends StatelessWidget {
                 padding: const PagePadding.horizontal(),
                 child: InkWell(
                   onTap: () {
-                    // Butona tıklanınca yapılacaklar
-                    // Fonksiyon eklicez
+                    NavigatorHelper.navigateToPage(context, const CryptoView());
                   },
                   child: Container(
                     width: AppStyles.cardWidth,
@@ -175,7 +174,7 @@ class _AddStockButton extends StatelessWidget {
       alignment: Alignment.topRight,
       child: IconButton(
         onPressed: () {
-          // crypto ekleme butonu
+          NavigatorHelper.navigateToPage(context, const FinancheView());
         },
         icon: const Icon(Icons.add),
       ),

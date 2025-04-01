@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobil_app/product/widget/list_tile.dart';
 
+/// kripyto yada finans icin lsite getirecek
 mixin CommandListTileMixin {
   Widget buildCommonList(List<dynamic>? items) {
     if (items != null && items.isNotEmpty) {
