@@ -9,6 +9,7 @@ class AppColors {
   static const Color peachColor = Color(0xFFFBD4B1); // #fbd4b1 - (251,212,177)
   static const Color blueColor = Color(0xFF2972B6); // #2972b6 - (41,114,182)
   static const Color blueInputColor = Color.fromARGB(255, 30, 92, 148);
+  static const Color appBarColor = Color(0xFF003861);
   // Diğer sabit renkler
   /// backroundColor white yapabiliriz bakacaz
   static const Color backgroundColor =

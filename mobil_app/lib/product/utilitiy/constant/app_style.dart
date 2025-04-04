@@ -14,7 +14,7 @@ class AppStyles {
   static const double cryptoCardContainer = 100;
   static const double blur = 5;
   static const double radius = 15;
-  static const double listTileRadius = 18;
+  static const double listTileRadius = 22;
   static const Offset ofset = Offset(0, 2);
   static final BorderRadius borderRadius = BorderRadius.circular(10);
   static final BorderRadius borderRadius3xl = BorderRadius.circular(30);
@@ -119,7 +119,7 @@ class AppStyles {
   static final ShapeBorder listTileBorder =
       RoundedRectangleBorder(borderRadius: borderRadius);
 
-  static const BoxDecoration backgroundGradientBox = BoxDecoration(
+  static const BoxDecoration backgroundLoginGradientBox = BoxDecoration(
     gradient: AppColors.backgroundGradient,
   );
   static OutlineInputBorder outlineBorder({double width = 1.5}) {

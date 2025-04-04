@@ -28,12 +28,12 @@ class _LoginViewState extends LoginViewModel {
 
     return Scaffold(
       body: Container(
-        decoration: AppStyles.backgroundGradientBox,
+        decoration: AppStyles.backgroundLoginGradientBox,
         child: Column(
           children: [
             SizedBox(height: myHeight * 0.08),
             const Padding(
-              padding:  PagePadding.loginHeaderColumn(),
+              padding: PagePadding.loginHeaderColumn(),
               child: _Header(),
             ),
             const SizedBox(height: 20), // Login ile kutu arası boşluk
@@ -53,4 +53,3 @@ class _LoginViewState extends LoginViewModel {
     );
   }
 }
-

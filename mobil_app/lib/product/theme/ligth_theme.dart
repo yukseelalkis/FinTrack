@@ -11,15 +11,15 @@ class LightTheme {
 
         /// AppBar Ayarları
         appBarTheme: const AppBarTheme(
-          backgroundColor: AppColors.backgroundColor,
+          backgroundColor: AppColors.appBarColor,
           centerTitle: true,
-          elevation: 0,
+          elevation: 5,
           titleTextStyle: TextStyle(
-            color: AppColors.darkColor,
+            color: AppColors.whiteColor,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
-          iconTheme: IconThemeData(color: AppColors.darkColor),
+          iconTheme: IconThemeData(color: AppColors.whiteColor),
         ),
 
         /// Global TextTheme
@@ -34,9 +34,20 @@ class LightTheme {
           labelSmall: TextStyle(fontSize: 15, color: AppColors.greyColor),
           //
         ),
+        listTileTheme: ListTileThemeData(
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          tileColor: AppColors.whiteColor,
+          dense: true,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textColor: AppColors.darkColor,
+          iconColor: AppColors.primaryColor,
+          style: ListTileStyle.list,
+        ),
 
-
-    
         /// Global ElevatedButtonTheme
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
