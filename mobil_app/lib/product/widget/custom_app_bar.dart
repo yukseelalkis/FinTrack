@@ -4,11 +4,13 @@ import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 
+  // buradaki  app bari daha koseli  yapacaz
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.appBarColor, // ya da istediğin renk
       elevation: 10,
+
       centerTitle: true,
       title: SizedBox(
         height: 70,

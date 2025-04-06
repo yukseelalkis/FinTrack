@@ -87,15 +87,20 @@ class _CardListBuilder extends StatelessWidget {
               );
             }
             final coin = _coinItems![index];
-            return _cryptoCard(
-                name: coin.name ?? 'N/A',
-                price: '\$${coin.currentPrice?.toStringAsFixed(2) ?? '0.00'}',
-                change:
-                    '${coin.priceChangePercentage24h?.toStringAsFixed(2) ?? '0.00'}%',
-                imageUrl: coin.image ?? '',
-                changeColor: (coin.priceChangePercentage24h ?? 0) >= 0
-                    ? AppColors.greenColor
-                    : AppColors.errorColor);
+            return InkWell(
+              onTap: () {
+                NavigatorHelper.navigateToPage(context, DetailView(item: coin));
+              },
+              child: _cryptoCard(
+                  name: coin.name ?? 'N/A',
+                  price: '\$${coin.currentPrice?.toStringAsFixed(2) ?? '0.00'}',
+                  change:
+                      '${coin.priceChangePercentage24h?.toStringAsFixed(2) ?? '0.00'}%',
+                  imageUrl: coin.image ?? '',
+                  changeColor: (coin.priceChangePercentage24h ?? 0) >= 0
+                      ? AppColors.greenColor
+                      : AppColors.errorColor),
+            );
           },
         ),
       ),

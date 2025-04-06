@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mobil_app/feature/mixin/format_date.dart';
 import 'package:mobil_app/feature/model/coinModel.dart';
 import 'package:mobil_app/feature/model/stockModel.dart';
+import 'package:mobil_app/feature/view/detail_view.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
-import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_style.dart';
+import 'package:mobil_app/product/utilitiy/navigator/navigator_helper.dart';
 
 class CommonListTile extends StatelessWidget with FormatDate, LimitedLeading {
   final dynamic item;
@@ -37,6 +38,14 @@ class CommonListTile extends StatelessWidget with FormatDate, LimitedLeading {
         borderRadius: AppStyles.borderRadius,
         shadowColor: AppColors.darkColor,
         child: ListTile(
+          /// tiklaninca olacak seyler
+          onTap: () {
+            NavigatorHelper.navigateToPage(
+                context,
+                DetailView(
+                  item: item,
+                ));
+          },
           leading: CircleAvatar(
             radius: AppStyles.listTileRadius,
             backgroundColor: AppColors.peachColor,

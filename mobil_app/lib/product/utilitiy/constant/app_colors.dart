@@ -12,8 +12,10 @@ class AppColors {
   static const Color appBarColor = Color(0xFF003861);
   // Diğer sabit renkler
   /// backroundColor white yapabiliriz bakacaz
+  // static const Color backgroundColor =
+  //     Color(0xFF2972B6); // #2972b6 - (41,114,182)
   static const Color backgroundColor =
-      Color(0xFF2972B6); // #2972b6 - (41,114,182)
+      Color.fromARGB(255, 255, 255, 255); // #2972b6 - (41,114,182)
   static const Color textColor = Color(0xFF333333);
   static const Color greyColor = Colors.grey;
   static const Color transparent = Colors.transparent;

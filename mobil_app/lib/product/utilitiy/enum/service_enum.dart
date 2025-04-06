@@ -3,7 +3,8 @@ enum ServicePath {
   stockPopuler('stock/popular?count=5'),
   stockGetAll('stock'),
   coinPopuler('coin/popular'),
-  coinGetAll('coin/All');
+  coinGetAll('coin/All'),
+  coinGetStatistic('coin/statistics?id=');
 
   final String path;
   const ServicePath(this.path);

@@ -12,6 +12,7 @@ dependencies:
   flutter_credit_card: ^4.1.0
   dio: ^5.8.0+1
   intl: ^0.20.2
+  fl_chart: ^0.63.0
 
 dev_dependencies:
   flutter_test:

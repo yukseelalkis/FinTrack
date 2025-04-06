@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobil_app/feature/mixin/list_tile_mixin.dart';
 import 'package:mobil_app/feature/model/coinModel.dart';
 import 'package:mobil_app/feature/view/crypto_view.dart';
+import 'package:mobil_app/feature/view/detail_view.dart';
 import 'package:mobil_app/feature/view/finanche_view.dart';
 import 'package:mobil_app/feature/view_model/home_view_model.dart';
 import 'package:mobil_app/product/init/language/project_items_string.dart';
