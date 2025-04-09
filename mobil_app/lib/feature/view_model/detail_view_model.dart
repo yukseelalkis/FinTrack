@@ -36,7 +36,7 @@ abstract class DetailViewModel extends State<DetailView> {
     });
   }
 
-  String getItemSymbol() {
+  String  getItemSymbol() {
     if (widget.item is CoinModel) {
       return (widget.item as CoinModel).symbol?.toUpperCase() ?? 'Coin';
     } else if (widget.item is StockModel) {

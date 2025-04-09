@@ -1,9 +1,7 @@
 part of '../view/login_view.dart';
 
 class _Header extends StatelessWidget {
-  const _Header({
-    super.key,
-  });
+  const _Header({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +41,6 @@ class _Header extends StatelessWidget {
 }
 
 class _BodyColumn extends StatelessWidget {
-  void _handleForgotPassword() {
-    // Şifremi unuttum işlemleri buraya
-  }
-  void _register() {
-    // Şifremi unuttum işlemleri buraya
-  }
   const _BodyColumn({
     required this.emailController,
     required this.passwordController,
@@ -58,6 +50,14 @@ class _BodyColumn extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final double myWidth;
+
+  void _handleForgotPassword() {
+    // Şifremi unuttum işlemleri
+  }
+
+  void _register() {
+    // Kayıt ol işlemleri
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _BodyColumn extends StatelessWidget {
           child: Column(
             children: [
               CustomTextField(
-                hintText: ProjectItemsString.emailHintText,
+                hintText: ProjectItemsString.userName,
                 controller: emailController,
               ),
               const SizedBox(height: 20),
@@ -84,21 +84,30 @@ class _BodyColumn extends StatelessWidget {
         ),
         const SizedBox(height: 30),
         CustomGestureText(
-            text: ProjectItemsString.fotgotPassword,
-            onTapCallback: _handleForgotPassword),
+          text: ProjectItemsString.fotgotPassword,
+          onTapCallback: _handleForgotPassword,
+        ),
         const SizedBox(height: 30),
         SizedBox(
           width: myWidth,
           height: 50,
           child: ElevatedButton(
-            onPressed: () {},
-            child: Text(ProjectItemsString.loginText,
-                style: Theme.of(context).textTheme.headlineSmall),
+            onPressed: () {
+              final viewModel =
+                  context.findAncestorStateOfType<LoginViewModel>();
+              viewModel?.loginUser();
+            },
+            child: Text(
+              ProjectItemsString.loginText,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
           ),
         ),
         const SizedBox(height: 30),
         CustomGestureText(
-            text: ProjectItemsString.register, onTapCallback: _register),
+          text: ProjectItemsString.register,
+          onTapCallback: _register,
+        ),
         const SizedBox(height: 10),
       ],
     );

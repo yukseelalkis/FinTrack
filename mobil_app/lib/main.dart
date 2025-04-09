@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobil_app/feature/view/home_view.dart';
+import 'package:mobil_app/feature/view/login_view.dart';
+import 'package:mobil_app/feature/view/splash_view.dart';
 import 'package:mobil_app/product/theme/ligth_theme.dart';
 
 void main() {
@@ -13,6 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: _lightTheme.theme,
-        home: const HomeView());
+        home: const LoginView());
   }
 }

@@ -17,7 +17,7 @@ class ProjectItemsString {
   static const cardNameHint = 'Ad Soyad';
   static const loginText = 'Login';
   static const welcomeBack = 'Welcome Back';
-  static const emailHintText = 'Email or Phone';
+  static const userName = 'Kullanıcı Adı';
   static const passwordHintText = 'Password';
   static const fotgotPassword = 'Forgot Password?';
   static const register = 'Register';

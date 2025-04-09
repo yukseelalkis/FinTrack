@@ -17,14 +17,11 @@ class LoginView extends StatefulWidget {
   @override
   State<LoginView> createState() => _LoginViewState();
 }
-
 class _LoginViewState extends LoginViewModel {
   @override
   Widget build(BuildContext context) {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
 
     return Scaffold(
       body: Container(
@@ -42,9 +39,10 @@ class _LoginViewState extends LoginViewModel {
               padding: const PagePadding.loginTextField(),
               decoration: AppStyles.loginDecoration,
               child: _BodyColumn(
-                  emailController: emailController,
-                  passwordController: passwordController,
-                  myWidth: myWidth),
+                emailController: emailController,
+                passwordController: passwordController,
+                myWidth: myWidth,
+              ),
             ),
             const Spacer(),
           ],
