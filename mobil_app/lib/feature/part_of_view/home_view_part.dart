@@ -1,24 +1,6 @@
 part of '../view/home_view.dart';
 
-class _HeaderWithAddButton extends StatelessWidget {
-  const _HeaderWithAddButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(ProjectItemsString.populer,
-            style: Theme.of(context).textTheme.titleMedium),
-        const _AddStockButton(),
-      ],
-    );
-  }
-}
-
+/// Header
 class _Header extends StatelessWidget {
   const _Header({
     super.key,
@@ -47,6 +29,80 @@ class _Header extends StatelessWidget {
     );
   }
 }
+
+class _HeaderWithAddButton extends StatelessWidget {
+  const _HeaderWithAddButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(ProjectItemsString.populer,
+            style: Theme.of(context).textTheme.titleMedium),
+        const _AddStockButton(),
+      ],
+    );
+  }
+}
+
+class _AddStockButton extends StatelessWidget {
+  const _AddStockButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: IconButton(
+        onPressed: () {
+          NavigatorHelper.navigateToPage(context, const FinancialItemsView());
+        },
+        icon: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+///Body
+
+class _HomeBody extends StatefulWidget {
+  List<StockModel> stockItems;
+  List<CoinModel> coinItems;
+
+  _HomeBody({super.key, required this.stockItems, required this.coinItems});
+
+  @override
+  State<_HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<_HomeBody> with CommandListTileMixin {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: context.width,
+      decoration: AppStyles.frontRoundDecoration,
+      child: SingleChildScrollView(
+        padding: const PagePadding.xsll(),
+        child: Column(
+          children: [
+            const _HeaderWithAddButton(),
+            buildCommonList(widget.stockItems ?? []),
+            Text(ProjectItemsString.cryptoText,
+                style: Theme.of(context).textTheme.titleMedium),
+            _CardListBuilder(coinItems: widget.coinItems ?? [])
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Body Atomic
 
 class _CardListBuilder extends StatelessWidget {
   const _CardListBuilder({
@@ -89,9 +145,10 @@ class _CardListBuilder extends StatelessWidget {
             final coin = _coinItems![index];
             return InkWell(
               onTap: () {
-                NavigatorHelper.navigateToPage(context, DetailView(item: coin));
+                NavigatorHelper.navigateToPage(
+                    context, CryptoDetailView(item: coin));
               },
-              child: _cryptoCard(
+              child: _CryptoCard(
                   name: coin.name ?? 'N/A',
                   price: '\$${coin.currentPrice?.toStringAsFixed(2) ?? '0.00'}',
                   change:
@@ -108,8 +165,8 @@ class _CardListBuilder extends StatelessWidget {
   }
 }
 
-class _cryptoCard extends StatelessWidget {
-  const _cryptoCard({
+class _CryptoCard extends StatelessWidget {
+  const _CryptoCard({
     required this.name,
     required this.price,
     required this.change,
@@ -163,25 +220,6 @@ class _cryptoCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _AddStockButton extends StatelessWidget {
-  const _AddStockButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: IconButton(
-        onPressed: () {
-          NavigatorHelper.navigateToPage(context, const FinancheView());
-        },
-        icon: const Icon(Icons.add),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:mobil_app/feature/service/login_service.dart';
 import 'package:mobil_app/feature/view/home_view.dart';
 import 'package:mobil_app/feature/view/login_view.dart';
 import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LoginViewModel extends State<LoginView> {
   late final TextEditingController emailController;
@@ -20,7 +21,6 @@ abstract class LoginViewModel extends State<LoginView> {
   void initState() {
     super.initState();
     dio = Dio(BaseOptions(baseUrl: ServicePath.baseUrl.path));
-
     emailController = TextEditingController();
     passwordController = TextEditingController();
     loginService = LoginService(dio);
@@ -46,7 +46,14 @@ abstract class LoginViewModel extends State<LoginView> {
 
     try {
       final response = await loginService.login(loginModel);
+
       if (response != null && response.tokens != null) {
+        print('TOKEN: ${response.tokens}');
+
+        // ← TOKEN BURADA KAYDEDİLİYOR
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('user_token', response.tokens!);
+
         setState(() {
           token = response.tokens;
         });

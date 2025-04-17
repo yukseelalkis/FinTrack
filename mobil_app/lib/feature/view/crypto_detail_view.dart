@@ -1,19 +1,19 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/view/fee_view.dart';
-import 'package:mobil_app/feature/view_model/detail_view_model.dart';
-import 'package:mobil_app/product/utilitiy/navigator/navigator_helper.dart';
+import 'package:mobil_app/feature/view/payment_view.dart';
+import 'package:mobil_app/feature/view_model/crypto_detail_view_model.dart';
+import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
 
-class DetailView extends StatefulWidget {
+class CryptoDetailView extends StatefulWidget {
   final dynamic item; // CoinModel veya StockModel olabilir
 
-  const DetailView({super.key, required this.item});
+  const CryptoDetailView({super.key, required this.item});
 
   @override
-  State<DetailView> createState() => _DetailViewState();
+  State<CryptoDetailView> createState() => _CryptoDetailViewState();
 }
 
-class _DetailViewState extends DetailViewModel {
+class _CryptoDetailViewState extends DetailViewModel {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +42,8 @@ class _DetailViewState extends DetailViewModel {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          NavigatorHelper.navigateToPage(context, FeeView());
+                          NavigatorHelper.navigateToPage(
+                              context, const PaymentView());
                         },
                         child: const Text('Satin Al'))
                   ],

@@ -30,7 +30,6 @@ abstract class ILoginService {
 
   ILoginService(this.dio);
   Future<TokenModel?> login(LoginModel model);
-  //'http://localhost:5284/api/account/login' \
   final String _path = 'account/login';
 }
 

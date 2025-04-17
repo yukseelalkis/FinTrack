@@ -17,6 +17,7 @@ class LoginView extends StatefulWidget {
   @override
   State<LoginView> createState() => _LoginViewState();
 }
+
 class _LoginViewState extends LoginViewModel {
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,10 @@ class _LoginViewState extends LoginViewModel {
     double myWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: true, // Klavye açılınca ekran kayar
+
       body: Container(
-        decoration: AppStyles.backgroundLoginGradientBox,
+        decoration: AppStyles.backgroundGradientBox,
         child: Column(
           children: [
             SizedBox(height: myHeight * 0.08),

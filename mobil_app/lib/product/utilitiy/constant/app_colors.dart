@@ -26,7 +26,10 @@ class AppColors {
   static final Color borderCardColor = Colors.grey.shade200;
   static final Color addCardBorderColor = Colors.grey.shade300;
   static final Color cryptoCardShadow = Colors.grey.shade100;
+  static final Color listtileSubtitleColor = Colors.grey.shade600;
+  static final Color cardIconColor = Colors.grey.shade700;
 
+  // Colors.grey.shade700,
   static const LinearGradient backgroundGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
@@ -39,3 +42,5 @@ class AppColors {
 }
 
 // /Colors.grey.shade100,
+
+

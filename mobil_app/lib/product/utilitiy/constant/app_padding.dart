@@ -13,6 +13,11 @@ class PagePadding extends EdgeInsets {
   const PagePadding.loginHeaderColumn() : super.symmetric(horizontal: 25);
   const PagePadding.loginTextField()
       : super.symmetric(horizontal: 20, vertical: 30);
+  const PagePadding.listTile()
+      : super.symmetric(horizontal: 12.0, vertical: 6.0);
+  //  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+  const PagePadding.bottom() : super.only(bottom: 8);
+  const PagePadding.buttonContainer() : super.only(bottom: 8);
 
   /// Splash özel padding
   static EdgeInsets splashSymmetric(BuildContext context) =>
@@ -21,3 +26,4 @@ class PagePadding extends EdgeInsets {
 }
 
 // const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+//const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),

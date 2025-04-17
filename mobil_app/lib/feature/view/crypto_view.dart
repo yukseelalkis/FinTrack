@@ -18,7 +18,7 @@ class _CryptoViewState extends CryptoViewModel with CommandListTileMixin {
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(
-            decoration: AppStyles.backgroundLoginGradientBox,
+            decoration: AppStyles.backgroundGradientBox,
             child: buildCommonList(coinItems)),
       ),
     );

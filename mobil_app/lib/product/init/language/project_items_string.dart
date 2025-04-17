@@ -2,7 +2,7 @@ class ProjectItemsString {
   static const splashTitle = 'Yatırımlarınızı Yönetin';
   static const splashSub =
       'Hisse senetlerinden kripto paralara, yatırım fırsatlarını keşfedin ve geleceğe FinTrack ile güvenle bakın.';
-  static const validateButton = 'Kaydet';
+  static const payButton = 'Öde';
   static const snackBarPositive = '✅ Ödeme başarıyla gerçekleşti!';
   static const snackBarNegative =
       'Desteklenmeyen kart tipi! Sadece Visa, MasterCard veya Amex geçerlidir.';
@@ -25,4 +25,22 @@ class ProjectItemsString {
   static const money = '\$ 7,466.20';
   static const populer = 'Populer';
   static const cryptoText = 'Crypto Para Piyasası';
+  static const marketValue = 'Piyasa Değeri';
+  static const none = 'None';
+  static const symbol = 'Sembol';
+  static const company = 'Şirket';
+  static const purchase = 'Alış Fiyatı';
+  static const industry = 'Sektör';
+  static const marketCap = 'Piyasa Değeri';
+  static const comments = 'Yorumlar:';
+  static const defaultUsername = 'Kullanıcı adi:';
+  static const titleController = 'Başlık';
+  static const commentController = 'Yorum';
+  static const commentEmptyError = 'Yorum Boş bırakılamaz';
+  static const shareButton = 'Paylaş';
+  static const buyButton = 'Satın Al';
+  static const commentButton = 'Yorum Yap';
+  static const  commentTitle = 'Yorum Başlığı';
+  static const  commentContent = 'Yorum İçeriği';
+  static const  sendButton = 'Gönder';
 }

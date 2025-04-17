@@ -4,10 +4,11 @@ enum ServicePath {
   stockGetAll('stock'),
   coinPopuler('coin/popular'),
   coinGetAll('coin/All'),
+  stockBySymbol('stock?Symbol='),
   coinGetStatistic('coin/statistics?id=');
 
   final String path;
   const ServicePath(this.path);
 }
 
-//  final String _stockPath = 'stock/popular?count=5';
+//   // ✅ Eklenen kısım

@@ -4,21 +4,22 @@ import 'package:mobil_app/feature/view_model/finanche_view_model.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_style.dart';
 import 'package:mobil_app/product/widget/custom_app_bar.dart';
 
-class FinancheView extends StatefulWidget {
-  const FinancheView({super.key});
+class FinancialItemsView extends StatefulWidget {
+  const FinancialItemsView({super.key});
 
   @override
-  State<FinancheView> createState() => _FinancheViewState();
+  State<FinancialItemsView> createState() => _FinancialItemsViewtate();
 }
 
-class _FinancheViewState extends FinancheViewModel with CommandListTileMixin {
+class _FinancialItemsViewtate extends FinancialItemsModel
+    with CommandListTileMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const CustomAppBar(),
         body: SingleChildScrollView(
           child: Container(
-              decoration: AppStyles.backgroundLoginGradientBox,
+              decoration: AppStyles.backgroundGradientBox,
               child: buildCommonList(stockItems)),
         ));
   }

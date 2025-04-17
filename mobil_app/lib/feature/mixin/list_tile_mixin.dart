@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_app/product/widget/list_tile.dart';
+import 'package:mobil_app/product/widget/custom_list_tile.dart';
 
 /// kripyto yada finans icin lsite getirecek
 mixin CommandListTileMixin {

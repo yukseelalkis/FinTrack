@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mobil_app/feature/model/stockModel.dart';
 import 'package:mobil_app/feature/service/stock_service.dart';
-import 'package:mobil_app/feature/view/finanche_view.dart';
+import 'package:mobil_app/feature/view/financial_items_view.dart';
 import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
 
-abstract class FinancheViewModel extends State<FinancheView> {
+abstract class FinancialItemsModel extends State<FinancialItemsView> {
   List<StockModel>? stockItems;
   late final StockService stockService;
   late final Dio dio;

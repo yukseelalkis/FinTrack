@@ -34,6 +34,24 @@ class LightTheme {
           labelSmall: TextStyle(fontSize: 15, color: AppColors.greyColor),
           //
         ),
+        // listTileTheme: ListTileThemeData(
+        //   contentPadding:
+        //       const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        //   shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.circular(12),
+        //   ),
+        //   tileColor: AppColors.whiteColor,
+        //   dense: true,
+        //   visualDensity: VisualDensity.adaptivePlatformDensity,
+        //   textColor: AppColors.darkColor,
+        //   iconColor: AppColors.primaryColor,
+        //   style: ListTileStyle.list,
+        // ),
+        cardTheme: CardTheme(
+          elevation: 3,
+          shape:
+              RoundedRectangleBorder(borderRadius: AppStyles.borderRadius3xl),
+        ),
         listTileTheme: ListTileThemeData(
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -48,7 +66,7 @@ class LightTheme {
           style: ListTileStyle.list,
         ),
 
-        /// Global ElevatedButtonTheme
+        // /// Global ElevatedButtonTheme
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.blueColor,

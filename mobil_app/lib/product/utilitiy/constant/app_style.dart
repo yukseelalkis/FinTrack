@@ -19,6 +19,9 @@ class AppStyles {
   static final BorderRadius borderRadius = BorderRadius.circular(10);
   static final BorderRadius borderRadius3xl = BorderRadius.circular(30);
   static const double loginIconSize = 62;
+  static const double listTileIconSize = 16;
+  static const double cardFontSize = 16;
+  static const double cardIconSize = 16;
 
   static final BoxDecoration loginDecoration =
       BoxDecoration(color: Colors.white, borderRadius: borderRadius3xl);
@@ -90,11 +93,6 @@ class AppStyles {
   static final Border addBorder =
       Border.all(color: AppColors.addCardBorderColor);
 
-  static const BoxDecoration backRoundDecoration = BoxDecoration(
-      gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [AppColors.primaryColor, AppColors.peachColor]));
   static const BoxDecoration frontRoundDecoration = BoxDecoration(
       color: AppColors.whiteColor,
       borderRadius: BorderRadius.only(
@@ -119,7 +117,7 @@ class AppStyles {
   static final ShapeBorder listTileBorder =
       RoundedRectangleBorder(borderRadius: borderRadius);
 
-  static const BoxDecoration backgroundLoginGradientBox = BoxDecoration(
+  static const BoxDecoration backgroundGradientBox = BoxDecoration(
     gradient: AppColors.backgroundGradient,
   );
   static OutlineInputBorder outlineBorder({double width = 1.5}) {

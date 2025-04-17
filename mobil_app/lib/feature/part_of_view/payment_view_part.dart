@@ -1,4 +1,4 @@
-part of '../view/fee_view.dart';
+part of '../view/payment_view.dart';
 
 class _CrediCardWidget extends StatelessWidget {
   const _CrediCardWidget({
@@ -46,7 +46,7 @@ class ValidateButton extends StatelessWidget {
         alignment: Alignment.centerRight,
         child: ElevatedButton(
           onPressed: onPressed,
-          child: const Text(ProjectItemsString.validateButton),
+          child: const Text(ProjectItemsString.payButton),
         ),
       ),
     );
