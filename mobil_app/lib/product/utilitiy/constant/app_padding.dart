@@ -18,6 +18,9 @@ class PagePadding extends EdgeInsets {
   //  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
   const PagePadding.bottom() : super.only(bottom: 8);
   const PagePadding.buttonContainer() : super.only(bottom: 8);
+  const PagePadding.cryptoPageTop() : super.only(top: 12);
+
+  //
 
   /// Splash özel padding
   static EdgeInsets splashSymmetric(BuildContext context) =>

@@ -40,7 +40,14 @@ class ProjectItemsString {
   static const shareButton = 'Paylaş';
   static const buyButton = 'Satın Al';
   static const commentButton = 'Yorum Yap';
-  static const  commentTitle = 'Yorum Başlığı';
-  static const  commentContent = 'Yorum İçeriği';
-  static const  sendButton = 'Gönder';
+  static const commentTitle = 'Yorum Başlığı';
+  static const commentContent = 'Yorum İçeriği';
+  static const sendButton = 'Gönder';
+  static const priceChart = 'Fiyat Grafiği';
+  static const marketInfo = 'Piyasa Bilgileri';
+  static const latestPrice = 'Fiyat';
+  static const volume = 'Hacim';
+  static const  loginFailed = 'Giriş başarısız';
+  static const  loginError = 'Bir hata oluştu';
+  static const  invalidCredentials = 'Kullanıcı adı veya şifre hatalı';
 }

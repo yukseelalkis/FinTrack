@@ -4,7 +4,9 @@ import 'package:mobil_app/feature/model/loginModel.dart';
 import 'package:mobil_app/feature/service/login_service.dart';
 import 'package:mobil_app/feature/view/home_view.dart';
 import 'package:mobil_app/feature/view/login_view.dart';
+import 'package:mobil_app/product/init/language/project_items_string.dart';
 import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
+import 'package:mobil_app/product/utilitiy/helper/snackbar_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LoginViewModel extends State<LoginView> {
@@ -48,9 +50,6 @@ abstract class LoginViewModel extends State<LoginView> {
       final response = await loginService.login(loginModel);
 
       if (response != null && response.tokens != null) {
-        print('TOKEN: ${response.tokens}');
-
-        // ← TOKEN BURADA KAYDEDİLİYOR
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('user_token', response.tokens!);
 
@@ -58,37 +57,33 @@ abstract class LoginViewModel extends State<LoginView> {
           token = response.tokens;
         });
 
-        if (context.mounted) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const HomeView()),
-          );
-        }
+        if (!mounted) return;
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeView()),
+        );
       } else {
         setState(() {
-          errorMessage = 'Giriş başarısız';
+          errorMessage = ProjectItemsString.loginFailed;
         });
 
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Kullanıcı adı veya şifre hatalı')),
-          );
-        }
+        if (!mounted) return;
+        SnackbarHelper.showError(
+            context, ProjectItemsString.invalidCredentials);
       }
     } catch (e) {
       setState(() {
-        errorMessage = 'Hata oluştu: $e';
+        errorMessage = '${ProjectItemsString.loginError}: $e';
       });
 
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bir hata oluştu: $e')),
-        );
-      }
+      if (!mounted) return;
+      SnackbarHelper.showError(context, '${ProjectItemsString.loginError}: $e');
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
     }
   }
 }

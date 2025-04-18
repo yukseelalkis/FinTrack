@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:mobil_app/feature/view_model/fee_mixin.dart';
+import 'package:mobil_app/feature/view_model/payment_view_model.dart';
 import 'package:mobil_app/product/init/language/project_items_string.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
@@ -15,7 +15,7 @@ class PaymentView extends StatefulWidget {
   State<PaymentView> createState() => _PaymentViewState();
 }
 
-class _PaymentViewState extends State<PaymentView> with FeeMixin {
+class _PaymentViewState extends PaymentViewModel {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,5 +1,3 @@
-///////// View modele kaydiracaz
-
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:mobil_app/feature/view/home_view.dart';
@@ -9,7 +7,7 @@ import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/duration/app_duration.dart';
 import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
 
-mixin FeeMixin on State<PaymentView> {
+abstract class PaymentViewModel extends State<PaymentView> {
   // Sabitler
   String cardNumber = ''; // Başlangıçta Visa
   String expiryDate = '';
@@ -44,7 +42,9 @@ mixin FeeMixin on State<PaymentView> {
         );
         // Kısa gecikme sonrası yönlendirme
         Future.delayed(AppDuration.payDuration, () {
-          NavigatorHelper.navigateAndRemoveUntil(context, const HomeView());
+          if (mounted) {
+            NavigatorHelper.navigateAndRemoveUntil(context, const HomeView());
+          }
         });
       } else {
         // Kart tipi desteklenmiyor

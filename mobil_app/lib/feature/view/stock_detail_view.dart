@@ -36,6 +36,8 @@ class _StockDetailState extends StockDetailViewModel with FormatDate {
                           padding: const PagePadding.all(),
                           child: Column(
                             children: [
+                              /// Sirket karttlari
+                              ///  sirket bilgileri vs gelmekte
                               _StockInfoCard(item: item),
                               const Padding(
                                 padding: PagePadding.all(),

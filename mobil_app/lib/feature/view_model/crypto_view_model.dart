@@ -7,7 +7,7 @@ import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
 
 abstract class CryptoViewModel extends State<CryptoView> {
   List<CoinModel>? coinItems;
-  late final coinService;
+  late final CoinService coinService;
   late final Dio dio;
 
   @override

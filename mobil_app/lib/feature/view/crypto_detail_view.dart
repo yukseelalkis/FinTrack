@@ -2,111 +2,62 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:mobil_app/feature/view/payment_view.dart';
 import 'package:mobil_app/feature/view_model/crypto_detail_view_model.dart';
+import 'package:mobil_app/product/init/language/project_items_string.dart';
+import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
 
-class CryptoDetailView extends StatefulWidget {
-  final dynamic item; // CoinModel veya StockModel olabilir
+part 'crypto_detail_part.dart';
 
+class CryptoDetailView extends StatefulWidget {
+  final dynamic item;
   const CryptoDetailView({super.key, required this.item});
 
   @override
   State<CryptoDetailView> createState() => _CryptoDetailViewState();
 }
 
-class _CryptoDetailViewState extends DetailViewModel {
+class _CryptoDetailViewState extends CryptoDetailViewModel {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text(getItemSymbol()),
-      ),
+      appBar: AppBar(title: Text(getItemSymbol())),
       body: marketItems == null
           ? const Center(child: CircularProgressIndicator())
           : marketItems!.prices.isEmpty
-              ? const Center(child: Text("Veri bulunamadı"))
+              ? const Center(child: Text(ProjectItemsString.none))
               : ListView(
-                  padding: const EdgeInsets.all(16),
+                  padding: const PagePadding.all(),
                   children: [
-                    // Özet Kart
                     const Text(
-                      "Price Chart",
+                      ProjectItemsString.priceChart,
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 16),
-                    SizedBox(height: 300, child: buildPriceChart()),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: buildInfoCard(),
+                      padding: const PagePadding.cryptoPageTop(),
+                      child: SizedBox(
+                        height: 260,
+                        child: _PriceChart(spots: buildSpots()),
+                      ),
                     ),
-                    ElevatedButton(
-                        onPressed: () {
-                          NavigatorHelper.navigateToPage(
-                              context, const PaymentView());
-                        },
-                        child: const Text('Satin Al'))
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: _MarketInfoCard(
+                        latestPrice: marketItems!.prices.last.value,
+                        latestMarketCap: marketItems!.marketCaps.isNotEmpty
+                            ? marketItems!.marketCaps.last.value
+                            : null,
+                        latestVolume: marketItems!.totalVolumes.isNotEmpty
+                            ? marketItems!.totalVolumes.last.value
+                            : null,
+                      ),
+                    ),
+                    const Padding(
+                      padding: PagePadding.cryptoPageTop(),
+                      child: _BuyButton(),
+                    ),
                   ],
                 ),
-    );
-  }
-
-  Widget buildInfoCard() {
-    final latestPrice = marketItems!.prices.last.value;
-    final latestMarketCap = marketItems!.marketCaps.isNotEmpty
-        ? marketItems!.marketCaps.last.value
-        : null;
-    final latestVolume = marketItems!.totalVolumes.isNotEmpty
-        ? marketItems!.totalVolumes.last.value
-        : null;
-
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      color: Colors.grey[100],
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Fiyat: \$${latestPrice.toStringAsFixed(2)}",
-                style: const TextStyle(fontSize: 16)),
-            if (latestMarketCap != null)
-              Text("Market Cap: \$${latestMarketCap.toStringAsFixed(2)}",
-                  style: const TextStyle(fontSize: 16)),
-            if (latestVolume != null)
-              Text("Hacim: \$${latestVolume.toStringAsFixed(2)}",
-                  style: const TextStyle(fontSize: 16)),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildPriceChart() {
-    final List<FlSpot> spots = marketItems!.prices.asMap().entries.map(
-      (entry) {
-        final index = entry.key.toDouble();
-        final price = entry.value.value;
-        return FlSpot(index, price);
-      },
-    ).toList();
-
-    return LineChart(
-      LineChartData(
-        titlesData: const FlTitlesData(show: false),
-        gridData: const FlGridData(show: false),
-        borderData: FlBorderData(show: false),
-        lineBarsData: [
-          LineChartBarData(
-            spots: spots,
-            isCurved: true,
-            dotData: FlDotData(show: false),
-            color: Colors.green,
-            belowBarData: BarAreaData(show: false),
-          ),
-        ],
-      ),
     );
   }
 }

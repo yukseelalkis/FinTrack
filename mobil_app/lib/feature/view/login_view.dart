@@ -7,7 +7,7 @@ import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_style.dart';
 import 'package:mobil_app/product/utilitiy/duration/app_duration.dart';
 import 'package:mobil_app/product/widget/custom_gesture.dart';
-import 'package:mobil_app/product/widget/custom_textField.dart';
+import 'package:mobil_app/product/widget/custom_text_field.dart';
 
 part '../part_of_view/login_view.part.dart';
 

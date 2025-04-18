@@ -7,11 +7,12 @@ abstract class SplashViewModel extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    navigateToLogin(context);
+    navigateToLogin();
   }
 
-  void navigateToLogin(BuildContext context) {
+  void navigateToLogin() {
     Future.delayed(AppDuration.splashDuration, () {
+      if (!mounted) return;
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginView()),
