@@ -6,8 +6,9 @@ import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/enum/app_routes.dart';
 import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
 
-part 'crypto_detail_part.dart';
+part '../part_of_view/crypto_detail_part.dart';
 
+/// degisimler olmasi gerekiyor
 class CryptoDetailView extends StatefulWidget {
   final dynamic item;
   const CryptoDetailView({super.key, required this.item});

@@ -8,7 +8,7 @@ import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/enum/app_routes.dart';
 import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
-part 'stock_detail_part.dart';
+part '../part_of_view/stock_detail_part.dart';
 
 class StockDetail extends StatefulWidget {
   final StockModel stockItem;

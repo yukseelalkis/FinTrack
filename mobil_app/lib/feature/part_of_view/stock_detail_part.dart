@@ -1,4 +1,4 @@
-part of 'stock_detail_view.dart';
+part of '../view/stock_detail_view.dart';
 
 class _StockInfoCard extends StatelessWidget {
   final StockDetailModel item;

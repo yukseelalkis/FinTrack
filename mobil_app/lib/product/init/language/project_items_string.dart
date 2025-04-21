@@ -22,7 +22,7 @@ class ProjectItemsString {
   static const userName = 'Kullanıcı Adı';
   static const passwordHintText = 'Password';
   static const fotgotPassword = 'Forgot Password?';
-  static const register = 'Register';
+  static const register = 'Kayıt Ol';
   static const portfolio = 'Main portfolio';
   static const money = '\$ 1.212';
   static const populer = 'Populer';

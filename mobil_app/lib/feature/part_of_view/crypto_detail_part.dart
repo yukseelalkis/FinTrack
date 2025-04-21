@@ -1,4 +1,4 @@
-part of 'crypto_detail_view.dart';
+part of '../view/crypto_detail_view.dart';
 
 class _PriceChart extends StatelessWidget {
   final List<FlSpot> spots;
