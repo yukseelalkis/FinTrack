@@ -22,6 +22,9 @@ class AppStyles {
   static const double listTileIconSize = 16;
   static const double cardFontSize = 16;
   static const double cardIconSize = 16;
+  static const double spacing10 = 10;
+  static const double spacing20 = 20;
+  static const double spacing30 = 30;
 
   static final BoxDecoration loginDecoration =
       BoxDecoration(color: Colors.white, borderRadius: borderRadius3xl);

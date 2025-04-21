@@ -23,7 +23,7 @@
 
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:mobil_app/feature/model/loginModel.dart';
+import 'package:mobil_app/feature/model/login_model.dart';
 
 abstract class ILoginService {
   final Dio dio;

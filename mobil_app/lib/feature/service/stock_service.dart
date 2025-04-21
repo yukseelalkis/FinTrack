@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:mobil_app/feature/model/stockModel.dart';
+import 'package:mobil_app/feature/model/stock_model.dart';
 
 abstract class IStockService {
   final Dio dio;

@@ -10,10 +10,10 @@ class LoginModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['username'] = this.username;
-    data['password'] = this.password;
-    return data;
+    return {
+      'username': username,
+      'password': password,
+    };
   }
 }
 
@@ -31,10 +31,10 @@ class TokenModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['userName'] = this.userName;
-    data['email'] = this.email;
-    data['tokens'] = this.tokens;
-    return data;
+    return {
+      'userName': userName,
+      'email': email,
+      'tokens': tokens,
+    };
   }
 }

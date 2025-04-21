@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/model/coinModel.dart';
-import 'package:mobil_app/feature/model/marketChartModel%20.dart';
-import 'package:mobil_app/feature/model/stockModel.dart';
-import 'package:mobil_app/feature/service/marketChartService.dart';
+import 'package:mobil_app/feature/model/coin_model.dart';
+import 'package:mobil_app/feature/model/chart_point_model.dart';
+import 'package:mobil_app/feature/model/stock_model.dart';
+import 'package:mobil_app/feature/service/market_chart_service.dart.dart';
 import 'package:mobil_app/feature/view/crypto_detail_view.dart';
 import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
 

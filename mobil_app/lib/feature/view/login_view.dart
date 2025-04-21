@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:mobil_app/feature/view_model/login_view_model.dart';
 import 'package:mobil_app/product/init/language/project_items_string.dart';
-import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_style.dart';
 import 'package:mobil_app/product/utilitiy/duration/app_duration.dart';
+import 'package:mobil_app/product/utilitiy/enum/app_routes.dart';
+import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
 import 'package:mobil_app/product/widget/custom_gesture.dart';
 import 'package:mobil_app/product/widget/custom_text_field.dart';
 
@@ -25,30 +26,35 @@ class _LoginViewState extends LoginViewModel {
     double myWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      resizeToAvoidBottomInset: true, // Klavye açılınca ekran kayar
-
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: AppStyles.backgroundGradientBox,
-        child: Column(
-          children: [
-            SizedBox(height: myHeight * 0.08),
-            const Padding(
-              padding: PagePadding.loginHeaderColumn(),
-              child: _Header(),
-            ),
-            const SizedBox(height: 20), // Login ile kutu arası boşluk
-            Container(
-              width: myWidth * 0.9,
-              padding: const PagePadding.loginTextField(),
-              decoration: AppStyles.loginDecoration,
-              child: _BodyColumn(
-                emailController: emailController,
-                passwordController: passwordController,
-                myWidth: myWidth,
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: myHeight * 0.08),
+                  const Padding(
+                    padding: PagePadding.loginHeaderColumn(),
+                    child: _Header(),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    width: myWidth * 0.9,
+                    padding: const PagePadding.loginTextField(),
+                    decoration: AppStyles.loginDecoration,
+                    child: _BodyColumn(
+                      emailController: emailController,
+                      passwordController: passwordController,
+                      myWidth: myWidth,
+                    ),
+                  ),
+                ],
               ),
             ),
-            const Spacer(),
-          ],
+          ),
         ),
       ),
     );

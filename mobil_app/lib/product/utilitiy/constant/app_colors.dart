@@ -34,7 +34,7 @@ class AppColors {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      Color(0xFF1E5C94), // (30, 92, 148)
+      appBarColor, // (30, 92, 148)
       Color(0xFF2972B6), // (41, 114, 182)
       Color.fromARGB(255, 122, 182, 235), // (92, 155, 210)
     ],

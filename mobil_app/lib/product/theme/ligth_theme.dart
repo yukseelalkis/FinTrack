@@ -26,6 +26,8 @@ class LightTheme {
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
               fontSize: 36, fontWeight: FontWeight.bold, color: Colors.white),
+          headlineMedium: TextStyle(
+              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
           headlineSmall: TextStyle(fontSize: 18, color: Colors.white),
           titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

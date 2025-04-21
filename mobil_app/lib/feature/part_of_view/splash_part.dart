@@ -2,9 +2,7 @@ part of '../view/splash_view.dart';
 
 /// Sayfadaki Splash gorunum m
 class _Header extends StatelessWidget {
-  const _Header({
-    super.key,
-  });
+  const _Header();
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +15,7 @@ class _Header extends StatelessWidget {
 
 /// textlerim
 class _TextColumn extends StatelessWidget {
-  const _TextColumn({
-    super.key,
-  });
+  const _TextColumn();
 
   @override
   Widget build(BuildContext context) {

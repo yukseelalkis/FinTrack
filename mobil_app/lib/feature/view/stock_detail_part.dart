@@ -3,7 +3,7 @@ part of 'stock_detail_view.dart';
 class _StockInfoCard extends StatelessWidget {
   final StockDetailModel item;
 
-  const _StockInfoCard({super.key, required this.item});
+  const _StockInfoCard({required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -179,29 +179,26 @@ class _CommentForm extends StatelessWidget {
 ///
 ///
 class _CommentActionButtons extends StatelessWidget {
-  const _CommentActionButtons();
+  final VoidCallback onToggleCommentForm;
+
+  const _CommentActionButtons({required this.onToggleCommentForm});
 
   @override
   Widget build(BuildContext context) {
-    final _state = context.findAncestorStateOfType<_StockDetailState>();
     return Container(
       color: Colors.white,
-      padding: const PagePadding.buttonContainer(),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ElevatedButton(
             onPressed: () {
-              NavigatorHelper.navigateToPage(context, const PaymentView());
+              NavigatorHelper.navigateToPage(context, AppRoute.payment);
             },
             child: const Text(ProjectItemsString.buyButton),
           ),
           ElevatedButton(
-            onPressed: () {
-              _state?.setState(() {
-                _state.showCommentForm = !_state.showCommentForm;
-              });
-            },
+            onPressed: onToggleCommentForm,
             child: const Text(ProjectItemsString.commentButton),
           )
         ],

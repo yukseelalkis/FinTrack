@@ -1,7 +1,7 @@
 part of '../view/login_view.dart';
 
 class _Header extends StatelessWidget {
-  const _Header({super.key});
+  const _Header();
 
   @override
   Widget build(BuildContext context) {
@@ -10,17 +10,16 @@ class _Header extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.account_balance_wallet_outlined,
-              color: AppColors.greenColor,
-              size: AppStyles.loginIconSize,
+            Image.asset(
+              'assets/png/logo2.png',
+              width: AppStyles.loginIconSize,
+              height: AppStyles.loginIconSize,
             ),
-            const SizedBox(width: 10),
             FadeInUp(
               duration: AppDuration.loginDuration,
               child: Text(
                 ProjectItemsString.loginText,
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
           ],
@@ -53,10 +52,6 @@ class _BodyColumn extends StatelessWidget {
 
   void _handleForgotPassword() {
     // Şifremi unuttum işlemleri
-  }
-
-  void _register() {
-    // Kayıt ol işlemleri
   }
 
   @override
@@ -98,7 +93,7 @@ class _BodyColumn extends StatelessWidget {
               viewModel?.loginUser();
             },
             child: Text(
-              ProjectItemsString.loginText,
+              ProjectItemsString.loginButtonText,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
@@ -106,7 +101,9 @@ class _BodyColumn extends StatelessWidget {
         const SizedBox(height: 30),
         CustomGestureText(
           text: ProjectItemsString.register,
-          onTapCallback: _register,
+          onTapCallback: () {
+            NavigatorHelper.navigateToPage(context, AppRoute.register);
+          },
         ),
         const SizedBox(height: 10),
       ],

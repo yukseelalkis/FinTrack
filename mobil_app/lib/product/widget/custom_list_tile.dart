@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/mixin/format_date.dart';
-import 'package:mobil_app/feature/mixin/limited_leading.dart';
-import 'package:mobil_app/feature/model/coinModel.dart';
-import 'package:mobil_app/feature/model/listileModel.dart';
-import 'package:mobil_app/feature/model/stockModel.dart';
-import 'package:mobil_app/feature/view/crypto_detail_view.dart';
-import 'package:mobil_app/feature/view/stock_detail_view.dart';
+import 'package:mobil_app/product/mixin/format_date.dart';
+import 'package:mobil_app/product/mixin/limited_leading.dart';
+import 'package:mobil_app/feature/model/coin_model.dart';
+import 'package:mobil_app/feature/model/listile_model.dart';
+import 'package:mobil_app/feature/model/stock_model.dart';
 import 'package:mobil_app/product/init/language/project_items_string.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_style.dart';
+import 'package:mobil_app/product/utilitiy/enum/app_routes.dart';
 import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
 
 class CommonListTile extends StatelessWidget with FormatDate, LimitedLeading {
@@ -18,7 +17,7 @@ class CommonListTile extends StatelessWidget with FormatDate, LimitedLeading {
   const CommonListTile({super.key, required this.item});
 
   /// burasi belki disari cikarilmak zorunda olabilir bunu soracaz
-  /// 
+  ///
   ListTileContentModel? buildContentModel(dynamic item) {
     if (item is StockModel) {
       return ListTileContentModel(
@@ -55,10 +54,17 @@ class CommonListTile extends StatelessWidget with FormatDate, LimitedLeading {
           onTap: () {
             if (item is CoinModel) {
               NavigatorHelper.navigateToPage(
-                  context, CryptoDetailView(item: item));
-            } else if (item is StockModel) {
+                context,
+                AppRoute.cryptoDetail,
+                data: item,
+              );
+            }
+            if (item is StockModel) {
               NavigatorHelper.navigateToPage(
-                  context, StockDetail(stockItem: item));
+                context,
+                AppRoute.stockDetail,
+                data: item,
+              );
             }
           },
           leading: content.isStock

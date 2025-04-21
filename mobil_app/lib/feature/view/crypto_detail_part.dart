@@ -111,7 +111,7 @@ class _BuyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () =>
-          NavigatorHelper.navigateToPage(context, const PaymentView()),
+          NavigatorHelper.navigateToPage(context, AppRoute.payment),
       child: const Text(ProjectItemsString.buyButton),
     );
   }

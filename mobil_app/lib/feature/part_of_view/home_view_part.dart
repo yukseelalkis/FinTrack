@@ -2,9 +2,7 @@ part of '../view/home_view.dart';
 
 /// Header
 class _Header extends StatelessWidget {
-  const _Header({
-    super.key,
-  });
+  const _Header();
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +29,7 @@ class _Header extends StatelessWidget {
 }
 
 class _HeaderWithAddButton extends StatelessWidget {
-  const _HeaderWithAddButton({
-    super.key,
-  });
+  const _HeaderWithAddButton();
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +46,7 @@ class _HeaderWithAddButton extends StatelessWidget {
 }
 
 class _AddStockButton extends StatelessWidget {
-  const _AddStockButton({
-    super.key,
-  });
+  const _AddStockButton();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +54,7 @@ class _AddStockButton extends StatelessWidget {
       alignment: Alignment.topRight,
       child: IconButton(
         onPressed: () {
-          NavigatorHelper.navigateToPage(context, const FinancialItemsView());
+          NavigatorHelper.navigateToPage(context, AppRoute.financialItems);
         },
         icon: const Icon(Icons.add),
       ),
@@ -71,10 +65,10 @@ class _AddStockButton extends StatelessWidget {
 ///Body
 
 class _HomeBody extends StatefulWidget {
-  List<StockModel> stockItems;
-  List<CoinModel> coinItems;
+  final List<StockModel> stockItems;
+  final List<CoinModel> coinItems;
 
-  _HomeBody({super.key, required this.stockItems, required this.coinItems});
+  const _HomeBody({required this.stockItems, required this.coinItems});
 
   @override
   State<_HomeBody> createState() => _HomeBodyState();
@@ -91,10 +85,10 @@ class _HomeBodyState extends State<_HomeBody> with CommandListTileMixin {
         child: Column(
           children: [
             const _HeaderWithAddButton(),
-            buildCommonList(widget.stockItems ?? []),
+            buildCommonList(widget.stockItems),
             Text(ProjectItemsString.cryptoText,
                 style: Theme.of(context).textTheme.titleMedium),
-            _CardListBuilder(coinItems: widget.coinItems ?? [])
+            _CardListBuilder(coinItems: widget.coinItems)
           ],
         ),
       ),
@@ -128,7 +122,7 @@ class _CardListBuilder extends StatelessWidget {
                 padding: const PagePadding.horizontal(),
                 child: InkWell(
                   onTap: () {
-                    NavigatorHelper.navigateToPage(context, const CryptoView());
+                    NavigatorHelper.navigateToPage(context, AppRoute.crypto);
                   },
                   child: Container(
                     width: AppStyles.cardWidth,
@@ -142,11 +136,11 @@ class _CardListBuilder extends StatelessWidget {
                 ),
               );
             }
-            final coin = _coinItems![index];
+            final coin = _coinItems[index];
             return InkWell(
               onTap: () {
-                NavigatorHelper.navigateToPage(
-                    context, CryptoDetailView(item: coin));
+                NavigatorHelper.navigateToPage(context, AppRoute.cryptoDetail,
+                    data: coin);
               },
               child: _CryptoCard(
                   name: coin.name ?? 'N/A',

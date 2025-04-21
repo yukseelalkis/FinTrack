@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/model/coinModel.dart';
+import 'package:mobil_app/feature/model/coin_model.dart';
 import 'package:mobil_app/feature/service/coin_service.dart';
 import 'package:mobil_app/feature/view/crypto_view.dart';
 import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';

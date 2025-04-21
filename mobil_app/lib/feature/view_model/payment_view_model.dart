@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:mobil_app/feature/view/home_view.dart';
 import 'package:mobil_app/feature/view/payment_view.dart';
 import 'package:mobil_app/product/init/language/project_items_string.dart';
-import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/duration/app_duration.dart';
+import 'package:mobil_app/product/utilitiy/enum/app_routes.dart';
 import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
+import 'package:mobil_app/product/utilitiy/helper/snackbar_helper.dart';
 
 abstract class PaymentViewModel extends State<PaymentView> {
   // Sabitler
@@ -34,32 +34,23 @@ abstract class PaymentViewModel extends State<PaymentView> {
           cardNumber.startsWith('5') ||
           cardNumber.startsWith('3')) {
         // Ödeme işlemini burada çağırabilirsin
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(ProjectItemsString.snackBarPositive),
-            backgroundColor: AppColors.doneColor,
-          ),
-        );
+        SnackbarHelper.showSuccess(
+            context, ProjectItemsString.snackBarPositive);
+
         // Kısa gecikme sonrası yönlendirme
         Future.delayed(AppDuration.payDuration, () {
           if (mounted) {
-            NavigatorHelper.navigateAndRemoveUntil(context, const HomeView());
+            NavigatorHelper.navigateAndRemoveUntil(context, AppRoute.home);
           }
         });
       } else {
         // Kart tipi desteklenmiyor
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(ProjectItemsString.snackBarNegative),
-          backgroundColor: AppColors.errorColor,
-        ));
+        SnackbarHelper.showError(context, ProjectItemsString.snackBarNegative);
       }
     } else {
       // Kredi karti hatali vs
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text(ProjectItemsString.snackBarError),
-            backgroundColor: AppColors.errorColor),
-      );
+
+      SnackbarHelper.showError(context, ProjectItemsString.snackBarError);
     }
   }
 }

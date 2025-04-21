@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_app/product/extension/app_route_extension.dart';
+import 'package:mobil_app/product/utilitiy/enum/app_routes.dart';
 
 class NavigatorHelper {
-  const NavigatorHelper._(); // Bu sınıfın örneği oluşturulmasın diye
+  const NavigatorHelper._();
 
-  /// Normal push ile sayfa geçişi
-  static void navigateToPage(BuildContext context, Widget page) {
+  static void navigateToPage(BuildContext context, AppRoute route,
+      {dynamic data}) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => page),
+      MaterialPageRoute(builder: (_) => route.getPage(data: data)),
     );
   }
 
-  /// pushReplacement ile geçiş (önceki sayfayı silerek)
-  static void navigateAndReplace(BuildContext context, Widget page) {
+  static void navigateAndReplace(BuildContext context, AppRoute route,
+      {dynamic data}) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => page),
+      MaterialPageRoute(builder: (_) => route.getPage(data: data)),
     );
   }
 
-  /// pushAndRemoveUntil ile tüm geçmişi temizleyip yönlendirme
-  static void navigateAndRemoveUntil(BuildContext context, Widget page) {
+  static void navigateAndRemoveUntil(BuildContext context, AppRoute route,
+      {dynamic data}) {
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => page),
-      (route) => false,
+      MaterialPageRoute(builder: (_) => route.getPage(data: data)),
+      (_) => false,
     );
   }
 }

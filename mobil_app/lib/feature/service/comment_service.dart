@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:mobil_app/feature/model/commentPostModel.dart';
+import 'package:flutter/material.dart';
+import 'package:mobil_app/feature/model/comment_post_model.dart';
 
 abstract class ICommentService {
   Future<bool> postComment({
@@ -34,7 +35,7 @@ class CommentService extends ICommentService {
       );
       return response.statusCode == 200 || response.statusCode == 201;
     } catch (e) {
-      print('Yorum gönderme hatası: $e');
+      debugPrint('Yorum gönderme hatası: $e');
       return false;
     }
   }

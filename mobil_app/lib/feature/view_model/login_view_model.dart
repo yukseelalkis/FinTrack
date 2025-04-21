@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/model/loginModel.dart';
+import 'package:mobil_app/feature/model/login_model.dart';
 import 'package:mobil_app/feature/service/login_service.dart';
 import 'package:mobil_app/feature/view/home_view.dart';
 import 'package:mobil_app/feature/view/login_view.dart';

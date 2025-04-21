@@ -1,9 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/view/payment_view.dart';
 import 'package:mobil_app/feature/view_model/crypto_detail_view_model.dart';
 import 'package:mobil_app/product/init/language/project_items_string.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
+import 'package:mobil_app/product/utilitiy/enum/app_routes.dart';
 import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
 
 part 'crypto_detail_part.dart';

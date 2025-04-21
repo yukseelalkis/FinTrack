@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/model/stockDetailModel.dart';
+import 'package:mobil_app/feature/model/stock_detail_model.dart';
 
 class StockDetailService {
   final Dio _dio;

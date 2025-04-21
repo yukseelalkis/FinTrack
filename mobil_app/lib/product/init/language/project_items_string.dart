@@ -15,14 +15,16 @@ class ProjectItemsString {
   static const cvvNameHint = 'xxx';
   static const cardName = 'Kart Sahibi';
   static const cardNameHint = 'Ad Soyad';
-  static const loginText = 'Login';
+  static const loginButtonText = 'Login';
+  static const loginText = 'Welcome FinTract';
+  static const mailText = 'E-posta';
   static const welcomeBack = 'Welcome Back';
   static const userName = 'Kullanıcı Adı';
   static const passwordHintText = 'Password';
   static const fotgotPassword = 'Forgot Password?';
   static const register = 'Register';
   static const portfolio = 'Main portfolio';
-  static const money = '\$ 7,466.20';
+  static const money = '\$ 1.212';
   static const populer = 'Populer';
   static const cryptoText = 'Crypto Para Piyasası';
   static const marketValue = 'Piyasa Değeri';
@@ -47,7 +49,25 @@ class ProjectItemsString {
   static const marketInfo = 'Piyasa Bilgileri';
   static const latestPrice = 'Fiyat';
   static const volume = 'Hacim';
-  static const  loginFailed = 'Giriş başarısız';
-  static const  loginError = 'Bir hata oluştu';
-  static const  invalidCredentials = 'Kullanıcı adı veya şifre hatalı';
+  static const loginFailed = 'Giriş başarısız';
+  static const loginError = 'Bir hata oluştu';
+  // Snackbar mesajları
+  static const invalidCredentials = 'Kullanıcı adı veya şifre hatalı';
+  static const noSessionFound = 'Oturum bulunamadı. Lütfen tekrar giriş yapın.';
+  static const commentSuccess = 'Yorum başarıyla gönderildi';
+  static const commentFailed = 'Yorum gönderilemedi';
+  static const fetchError = 'Veriler alınırken bir hata oluştu.';
+
+  // Register Sayfası
+  static const createAccount = 'Hesap Oluşturuldu';
+  static const confirmPassword = 'Şifre';
+  static const backToLogin = 'Login';
+
+  static const passwordNotMatch = 'Şifreler aynı olmalı.';
+  static const passwordRequirement =
+      'Şifreniz en az 8 karakter olmalı, büyük harf, küçük harf, rakam ve özel karakter içermelidir.';
+  static const registerSuccess = 'Kayıt başarılı!';
+
+  static const errorMail = 'Lütfen geçerli bir e-posta adresi girin.';
+  static const errorSession = 'Kayıt başarısız, tekrar deneyin.';
 }

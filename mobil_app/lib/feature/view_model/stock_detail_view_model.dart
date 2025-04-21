@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/model/commentPostModel.dart';
-import 'package:mobil_app/feature/model/stockDetailModel.dart';
+import 'package:mobil_app/feature/model/comment_post_model.dart';
+import 'package:mobil_app/feature/model/stock_detail_model.dart';
 import 'package:mobil_app/feature/service/comment_service.dart';
 import 'package:mobil_app/feature/service/stock_detail_service.dart';
 import 'package:mobil_app/feature/view/stock_detail_view.dart';
+import 'package:mobil_app/product/init/language/project_items_string.dart';
 import 'package:mobil_app/product/utilitiy/enum/service_enum.dart';
 import 'package:mobil_app/product/utilitiy/helper/snackbar_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,29 +35,31 @@ abstract class StockDetailViewModel extends State<StockDetail> {
     try {
       final fetchDetailItems = await detailService
           .fetchGetSymbolDetail('${ServicePath.stockBySymbol.path}$symbol');
+      if (!mounted) return;
       setState(() {
         stockDetailItems = fetchDetailItems;
       });
     } catch (e) {
-      SnackbarHelper.showError(context, 'Veriler alınırken bir hata oluştu.');
+      if (!mounted) return;
+      SnackbarHelper.showError(context, ProjectItemsString.fetchError);
     }
   }
 
   Future<void> addComment() async {
-    if (!formKey.currentState!.validate()) return;
+    if (!(formKey.currentState?.validate() ?? false)) return;
 
     final comment = CommentPostModel(
       title: titleController.text.trim(),
       content: commentController.text.trim(),
-      stockId: widget.stockItem.id!,
+      stockId: widget.stockItem.id,
     );
 
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('user_token') ?? '';
 
     if (token.isEmpty) {
-      SnackbarHelper.showError(
-          context, "Oturum bulunamadı. Lütfen tekrar giriş yapın.");
+      if (!mounted) return;
+      SnackbarHelper.showError(context, ProjectItemsString.noSessionFound);
       return;
     }
 
@@ -66,16 +69,18 @@ abstract class StockDetailViewModel extends State<StockDetail> {
       token: token,
     );
 
+    if (!mounted) return;
+
     if (isSuccess) {
       setState(() {
         commentController.clear();
         titleController.clear();
         showCommentForm = false;
       });
-      SnackbarHelper.showSuccess(context, "Yorum başarıyla gönderildi");
+      SnackbarHelper.showSuccess(context, ProjectItemsString.commentSuccess);
       fetchGetStockSymbol(widget.stockItem.symbol);
     } else {
-      SnackbarHelper.showError(context, "Yorum gönderilemedi");
+      SnackbarHelper.showError(context, ProjectItemsString.commentFailed);
     }
   }
 }

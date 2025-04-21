@@ -4,9 +4,6 @@ import 'package:mobil_app/product/theme/ligth_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Zorunlu
-  // Eğer burada token kontrolü vs yapacaksan buraya ekleyebilirsin
-  // final prefs = await SharedPreferences.getInstance();
-
   runApp(MyApp());
 }
 

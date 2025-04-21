@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_app/feature/mixin/format_date.dart';
-import 'package:mobil_app/feature/model/stockDetailModel.dart';
-import 'package:mobil_app/feature/model/stockModel.dart';
-import 'package:mobil_app/feature/view/payment_view.dart';
+import 'package:mobil_app/product/mixin/format_date.dart';
+import 'package:mobil_app/feature/model/stock_detail_model.dart';
+import 'package:mobil_app/feature/model/stock_model.dart';
 import 'package:mobil_app/feature/view_model/stock_detail_view_model.dart';
 import 'package:mobil_app/product/init/language/project_items_string.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_padding.dart';
+import 'package:mobil_app/product/utilitiy/enum/app_routes.dart';
 import 'package:mobil_app/product/utilitiy/helper/navigator_helper.dart';
 part 'stock_detail_part.dart';
 
@@ -71,7 +71,13 @@ class _StockDetailState extends StockDetailViewModel with FormatDate {
                     ],
                   ),
           ),
-          const _CommentActionButtons(),
+          _CommentActionButtons(
+            onToggleCommentForm: () {
+              setState(() {
+                showCommentForm = !showCommentForm;
+              });
+            },
+          ),
         ],
       ),
     );
