@@ -2,12 +2,15 @@
 
 Fintrack is a Flutter-based mobile application that helps users track their stock and cryptocurrency investments. With a clean interface and smooth performance, it provides real-time financial data, company details, and the ability to comment on stocks.
 
-![Login Page]![Screenshot_1745225701](https://github.com/user-attachments/assets/a1b82237-7377-4c58-bbdd-b3494fcaf2a5)
-![Register Page]![Screenshot_1745227134](https://github.com/user-attachments/assets/5026c37f-38ad-4c86-8ea5-5b9300237967)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a1b82237-7377-4c58-bbdd-b3494fcaf2a5" width="250"/>
+  <img src="https://github.com/user-attachments/assets/5026c37f-38ad-4c86-8ea5-5b9300237967" width="250"/>
+</p>
 
-![Home]![Screenshot_1745227209](https://github.com/user-attachments/assets/71c453fa-3c23-41bc-ac81-6af004d1cb94)
-![Screenshot_1745227204](https://github.com/user-attachments/assets/7754bf8a-1a26-467a-a1e6-a6eb231340b5)
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/71c453fa-3c23-41bc-ac81-6af004d1cb94" width="250"/>
+  <img src="https://github.com/user-attachments/assets/7754bf8a-1a26-467a-a1e6-a6eb231340b5" width="250"/>
+</p>
 
 ## 🚀 Features
 
@@ -29,13 +32,27 @@ Fintrack is a Flutter-based mobile application that helps users track their stoc
 
 ## 📷 Screenshots
 
-| Login | Register | Portfolio |
-|-------|----------|-----------|
-| ![Login](screenshots/login.png) | ![Register](screenshots/register.png) | ![Portfolio](screenshots/portfolio.png) |
+### Login, Register & Portfolio
+<p align="center">
+  <img src="screenshots/login.png" width="220"/>
+  <img src="screenshots/register.png" width="220"/>
+  <img src="screenshots/portfolio.png" width="220"/>
+</p>
 
-| Detail View | Crypto Graph | Payment |
-|-------------|--------------|---------|
-| ![Detail](screenshots/detail.png) | ![Graph](screenshots/graph.png) | ![Payment](screenshots/payment.png) |
+### Detail View, Crypto Graph & Payment
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a2e2df05-2a68-4f04-940b-aec9e383a1fa" width="220"/>
+  <img src="https://github.com/user-attachments/assets/56762db2-393b-4e0b-8e49-bf10cd48b85f" width="220"/>
+  <img src="https://github.com/user-attachments/assets/a0d2b5d3-4404-473a-96bf-d25c4d73ab8e" width="220"/>
+</p>
+
+### 💳 Payment • 📉 Full Crypto List • 🏦 Full Stock List
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0a148617-3b5f-4dea-8a66-6cbaedbec0ae" width="250"/>
+  <img src="https://github.com/user-attachments/assets/f7621b72-da8e-473c-ae5f-f52647c0df3c" width="250"/>
+  <img src="https://github.com/user-attachments/assets/58dfc619-affe-465d-88a6-fffd796aa040" width="250"/>
+</p>
+
 
 ## 📁 Project Structure
 
