@@ -35,7 +35,7 @@ abstract class RegsiterViewModel extends State<RegisterView> {
   }
 
   //// register islmeleri
-  void onRegister(BuildContext context) async {
+  void onRegister() async {
     final username = usernameController.text.trim();
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
@@ -43,25 +43,34 @@ abstract class RegsiterViewModel extends State<RegisterView> {
     final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
 
     if (!emailRegex.hasMatch(email)) {
+      if (!mounted) return;
       SnackbarHelper.showError(context, ProjectItemsString.errorMail);
       return;
     }
 
     if (password != confirmPassword) {
+      if (!mounted) return;
       SnackbarHelper.showError(context, ProjectItemsString.passwordNotMatch);
       return;
     }
 
     if (password.length < 8) {
+      if (!mounted) return;
       SnackbarHelper.showError(context, ProjectItemsString.passwordRequirement);
       return;
     }
 
     final model = RegisterModel(
-        userName: username, email: email, password: confirmPassword);
+      userName: username,
+      email: email,
+      password: confirmPassword,
+    );
 
     try {
       final response = await registerService.register(model);
+
+      if (!mounted) return;
+
       if (response != null) {
         SnackbarHelper.showSuccess(context, ProjectItemsString.registerSuccess);
         NavigatorHelper.navigateToPage(context, AppRoute.login);
@@ -69,7 +78,8 @@ abstract class RegsiterViewModel extends State<RegisterView> {
         SnackbarHelper.showError(context, ProjectItemsString.errorSession);
       }
     } catch (e) {
-      SnackbarHelper.showError(context, 'Hata oluştu: \$e');
+      if (!mounted) return;
+      SnackbarHelper.showError(context, 'Hata oluştu: $e');
     }
   }
 }

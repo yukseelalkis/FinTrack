@@ -58,7 +58,6 @@ class _RegisterViewState extends RegsiterViewModel {
                         registerService: registerService,
                       ),
                     ),
-                    const SizedBox(height: AppStyles.spacing20),
                   ],
                 ),
               ),

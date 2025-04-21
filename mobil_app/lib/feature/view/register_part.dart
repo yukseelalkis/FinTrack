@@ -92,12 +92,12 @@ class _RegisterBody extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: AppStyles.spacing30),
+        const SizedBox(height: AppStyles.spacing20),
         SizedBox(
           width: myWidth,
           height: 50,
           child: ElevatedButton(
-            onPressed: () => onRegister(context),
+            onPressed: () => onRegister(),
             child: Text(
               ProjectItemsString.register,
               style: Theme.of(context).textTheme.headlineSmall,
