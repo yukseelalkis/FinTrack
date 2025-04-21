@@ -1,4 +1,4 @@
-part of 'register_view.dart';
+part of '../view/register_view.dart';
 
 class _RegisterHeader extends StatelessWidget {
   const _RegisterHeader();

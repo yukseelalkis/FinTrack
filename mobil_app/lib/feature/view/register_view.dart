@@ -10,7 +10,7 @@ import 'package:mobil_app/product/utilitiy/duration/app_duration.dart';
 import 'package:mobil_app/product/widget/custom_gesture.dart';
 import 'package:mobil_app/product/widget/custom_text_field.dart';
 
-part 'register_part.dart';
+part '../part_of_view/register_part.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
