@@ -38,7 +38,7 @@ Fintrack is a Flutter-based mobile application that helps users track their stoc
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a2e2df05-2a68-4f04-940b-aec9e383a1fa" width="220"/>
   <img src="https://github.com/user-attachments/assets/56762db2-393b-4e0b-8e49-bf10cd48b85f" width="220"/>
-  <img src="https://github.com/user-attachments/assets/dd3fb177-23f2-45d3-9850-5569a32b77c8" width="220"/>
+  <img src="https://github.com/user-attachments/assets/37d168cf-2c47-4155-bfb3-9d12dbc139d4" width="220"/>
 </p>
 
 ### 💳 Payment • 📉 Full Crypto List • 🏦 Full Stock List
