@@ -5,10 +5,15 @@ enum ServicePath {
   coinPopuler('coin/popular'),
   coinGetAll('coin/All'),
   stockBySymbol('stock?Symbol='),
-  coinGetStatistic('coin/statistics?id=');
+  coinGet7DaysStatistic('coin/7daysstatistics?id='),
+  coinGet15DaysStatistic('coin/15daysstatistics?id='),
+  coinGet30DaysStatistic('coin/30daysstatistics?id=');
 
   final String path;
   const ServicePath(this.path);
 }
 
 //   // ✅ Eklenen kısım
+
+
+//http://localhost:5284/api/coin/7daysstatistics?id=bitcoin

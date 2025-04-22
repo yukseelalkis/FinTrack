@@ -31,9 +31,36 @@ class _CryptoDetailViewState extends CryptoDetailViewModel {
                   children: [
                     const Text(
                       ProjectItemsString.priceChart,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+
+                    /// 🔽 Gün seçimi için ChoiceChip yapısı
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      child: Wrap(
+                        spacing: 8,
+                        children: dayOptions.map((day) {
+                          return ChoiceChip(
+                            label: Text("$day Gün"),
+                            selected: selectedDay == day,
+                            onSelected: (bool selected) {
+                              if (selected) {
+                                setState(() {
+                                  onDaySelected(
+                                      day, () => loadChartData(widget.item));
+                                  marketItems = null;
+                                });
+                              }
+                            },
+                          );
+                        }).toList(),
+                      ),
+                    ),
+
+                    /// 🔽 Grafik
                     Padding(
                       padding: const PagePadding.cryptoPageTop(),
                       child: SizedBox(
@@ -41,6 +68,8 @@ class _CryptoDetailViewState extends CryptoDetailViewModel {
                         child: _PriceChart(spots: buildSpots()),
                       ),
                     ),
+
+                    /// 🔽 Bilgi kartı
                     Padding(
                       padding: const EdgeInsets.only(top: 12),
                       child: _MarketInfoCard(
@@ -53,6 +82,8 @@ class _CryptoDetailViewState extends CryptoDetailViewModel {
                             : null,
                       ),
                     ),
+
+                    /// 🔽 Satın alma butonu
                     const Padding(
                       padding: PagePadding.cryptoPageTop(),
                       child: _BuyButton(),
