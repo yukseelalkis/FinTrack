@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_app/feature/view/add_company_dialog.dart';
+import 'package:mobil_app/product/widget/get_logo.dart';
 import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  final VoidCallback? onCompanyAdded; // 🔥 Burada parametre eklendi
 
-  // buradaki  app bari daha koseli  yapacaz
+  const CustomAppBar({super.key, this.onCompanyAdded});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.appBarColor, // ya da istediğin renk
+      backgroundColor: AppColors.appBarColor,
       elevation: 10,
-
       centerTitle: true,
-      title: SizedBox(
+      title: const SizedBox(
         height: 70,
-        child: Image.asset(
-          'assets/png/logo2.png',
-          fit: BoxFit.contain,
-        ),
+        child: GetLogo(),
       ),
       actions: [
         IconButton(
-          icon: const Icon(
-            Icons.search,
-          ),
-          onPressed: () {},
+          icon: const Icon(Icons.search),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) =>
+                  AddCompanyDialog(onCompanyAdded: onCompanyAdded),
+            );
+          },
         ),
       ],
     );

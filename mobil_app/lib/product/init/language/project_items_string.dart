@@ -70,4 +70,13 @@ class ProjectItemsString {
 
   static const errorMail = 'Lütfen geçerli bir e-posta adresi girin.';
   static const errorSession = 'Kayıt başarısız, tekrar deneyin.';
+  static const defaultDetail = 'DETAIL';
+
+  static const sessionNotFound =
+      "Oturum bulunamadı. Lütfen tekrar giriş yapın.";
+  static const addCompany = 'Şirket Ekle';
+
+  static const addCompantLabelText = 'Şirket Sembolü Girin (ör: AAPL)';
+  static const cancelButton = 'İptal';
+  static const saveButton = 'Kaydet';
 }

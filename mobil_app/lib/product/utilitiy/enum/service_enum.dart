@@ -7,13 +7,9 @@ enum ServicePath {
   stockBySymbol('stock?Symbol='),
   coinGet7DaysStatistic('coin/7daysstatistics?id='),
   coinGet15DaysStatistic('coin/15daysstatistics?id='),
-  coinGet30DaysStatistic('coin/30daysstatistics?id=');
+  coinGet30DaysStatistic('coin/30daysstatistics?id='),
+  addPortfolio('portfolio?symbol='); // 🔥 Düzelttik
 
   final String path;
   const ServicePath(this.path);
 }
-
-//   // ✅ Eklenen kısım
-
-
-//http://localhost:5284/api/coin/7daysstatistics?id=bitcoin

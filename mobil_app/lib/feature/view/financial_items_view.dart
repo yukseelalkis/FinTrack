@@ -8,19 +8,22 @@ class FinancialItemsView extends StatefulWidget {
   const FinancialItemsView({super.key});
 
   @override
-  State<FinancialItemsView> createState() => _FinancialItemsViewtate();
+  State<FinancialItemsView> createState() => _FinancialItemsViewState();
 }
 
-class _FinancialItemsViewtate extends FinancialItemsModel
+class _FinancialItemsViewState extends FinancialItemsModel
     with CommandListTileMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppBar(),
-        body: SingleChildScrollView(
-          child: Container(
-              decoration: AppStyles.backgroundGradientBox,
-              child: buildCommonList(stockItems)),
-        ));
+      appBar: CustomAppBar(
+          onCompanyAdded: fetchGetAllStock), // 🔥 burada doğru verdik
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: AppStyles.backgroundGradientBox,
+          child: buildCommonList(stockItems),
+        ),
+      ),
+    );
   }
 }

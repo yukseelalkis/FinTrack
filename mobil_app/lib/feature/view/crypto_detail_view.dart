@@ -64,7 +64,7 @@ class _CryptoDetailViewState extends CryptoDetailViewModel {
                     Padding(
                       padding: const PagePadding.cryptoPageTop(),
                       child: SizedBox(
-                        height: 260,
+                        height: 200,
                         child: _PriceChart(spots: buildSpots()),
                       ),
                     ),

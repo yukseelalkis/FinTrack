@@ -7,18 +7,56 @@ class _PriceChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDecreasing = spots.length >= 2 && spots.last.y < spots.first.y;
+
+    final Color trendColor = isDecreasing ? Colors.red : Colors.green;
+
     return LineChart(
       LineChartData(
-        titlesData: const FlTitlesData(show: false),
+        titlesData: FlTitlesData(
+          leftTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 40,
+              getTitlesWidget: (value, meta) => Text(
+                '\$${value.toStringAsFixed(0)}',
+                style: const TextStyle(fontSize: 10),
+              ),
+            ),
+          ),
+          bottomTitles: const AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          topTitles:
+              const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          rightTitles:
+              const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        ),
         gridData: const FlGridData(show: false),
         borderData: FlBorderData(show: false),
+        lineTouchData: LineTouchData(
+          enabled: true,
+          touchTooltipData: LineTouchTooltipData(
+            tooltipBgColor: Colors.black87,
+            getTooltipItems: (touchedSpots) => touchedSpots.map((spot) {
+              return LineTooltipItem(
+                '\$${spot.y.toStringAsFixed(2)}',
+                const TextStyle(color: Colors.white),
+              );
+            }).toList(),
+          ),
+        ),
         lineBarsData: [
           LineChartBarData(
             spots: spots,
             isCurved: true,
+            barWidth: 3,
+            color: trendColor,
+            belowBarData: BarAreaData(
+              show: true,
+              color: trendColor.withOpacity(0.2),
+            ),
             dotData: const FlDotData(show: false),
-            color: Colors.green,
-            belowBarData: BarAreaData(show: false),
           ),
         ],
       ),
@@ -96,6 +134,7 @@ class _MarketInfoCard extends StatelessWidget {
 }
 
 /// Büyük sayılar için kısaltılmış format
+/// mixin yaoilacak burasi
 String formatNumber(double number) {
   if (number >= 1e12) return '\$${(number / 1e12).toStringAsFixed(2)}T';
   if (number >= 1e9) return '\$${(number / 1e9).toStringAsFixed(2)}B';
