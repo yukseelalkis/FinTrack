@@ -5,7 +5,7 @@ import 'package:mobil_app/product/utilitiy/constant/app_colors.dart';
 
 class AppStyles {
   AppStyles._(); // new'lenmesin diye private constructor
-
+//RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))
   // sabitler
 
   static const double cardWidth = 100;
@@ -137,4 +137,7 @@ class AppStyles {
       color: AppColors.whiteOpacityColor, borderRadius: AppStyles.borderRadius);
   static final RoundedRectangleBorder elevantedButtonBorder =
       RoundedRectangleBorder(borderRadius: borderRadius3xl);
+
+  static final ShapeBorder addCompanyDialogBorder =
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(16));
 }

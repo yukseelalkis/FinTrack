@@ -46,3 +46,4 @@ abstract class AddCompanyViewModel extends State<AddCompanyDialog> {
     }
   }
 }
+
