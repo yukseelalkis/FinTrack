@@ -17,10 +17,13 @@ class _CryptoViewState extends CryptoViewModel with CommandListTileMixin {
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
-        child: Container(
-            decoration: AppStyles.backgroundGradientBox,
-            child: buildCommonList(coinItems)),
-      ),
+          child: Container(
+              decoration: AppStyles.backgroundGradientBox,
+              child: buildCommonList(
+                items: coinItems,
+                isLoading: isLoading, // ✅ yeni parametre
+                emptyMessage: 'Kripto veri bulunamadı.', // opsiyonel
+              ))),
     );
   }
 }

@@ -85,7 +85,10 @@ class _HomeBodyState extends State<_HomeBody> with CommandListTileMixin {
         child: Column(
           children: [
             const _HeaderWithAddButton(),
-            buildCommonList(widget.stockItems),
+            buildCommonList(
+              items: widget.stockItems,
+              isLoading: false,
+            ),
             Text(ProjectItemsString.cryptoText,
                 style: Theme.of(context).textTheme.titleMedium),
             _CardListBuilder(coinItems: widget.coinItems)

@@ -16,13 +16,15 @@ class _FinancialItemsViewState extends FinancialItemsModel
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-          onCompanyAdded: fetchGetAllStock), // 🔥 burada doğru verdik
+      appBar: CustomAppBar(onCompanyAdded: fetchGetAllPortfolio),
       body: SingleChildScrollView(
         child: Container(
-          decoration: AppStyles.backgroundGradientBox,
-          child: buildCommonList(stockItems),
-        ),
+            decoration: AppStyles.backgroundGradientBox,
+            child: buildCommonList(
+              items: stockItems,
+              isLoading: isLoading,
+              emptyMessage: 'Henüz portföyünüzde veri yok.',
+            )),
       ),
     );
   }
