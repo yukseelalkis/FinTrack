@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_app/feature/view/get_all_stock_view.dart';
 import 'package:mobil_app/feature/view/home_view.dart';
 import 'package:mobil_app/feature/view/login_view.dart';
 import 'package:mobil_app/feature/view/payment_view.dart';
@@ -26,6 +27,8 @@ extension AppRouteExtension on AppRoute {
         return StockDetail(stockItem: data);
       case AppRoute.cryptoDetail:
         return CryptoDetailView(item: data);
+      case AppRoute.getAll:
+        return const GetAllStock();
       case AppRoute.register:
         return const RegisterView();
     }

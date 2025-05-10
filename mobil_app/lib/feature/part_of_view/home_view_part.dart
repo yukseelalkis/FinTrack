@@ -10,12 +10,37 @@ class _Header extends StatelessWidget {
       children: [
         Padding(
           padding: const PagePadding.xsll(),
-          child: Container(
-            decoration: AppStyles.homeDecoration,
-            child: Text(
-              ProjectItemsString.portfolio,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                ProjectItemsString.portfolio,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+              ),
+              TextButton.icon(
+                onPressed: () {
+                  NavigatorHelper.navigateToPage(context, AppRoute.getAll);
+                },
+                icon: const Icon(Icons.stacked_bar_chart_rounded,
+                    color: Colors.white, size: 18),
+                label: const Text(
+                  "All Stock",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white.withOpacity(0.2),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         Padding(

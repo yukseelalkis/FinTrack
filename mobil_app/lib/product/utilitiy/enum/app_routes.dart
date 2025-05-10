@@ -6,5 +6,6 @@ enum AppRoute {
   crypto,
   stockDetail,
   cryptoDetail,
+  getAll,
   register
 }
