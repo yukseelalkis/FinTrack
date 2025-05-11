@@ -19,6 +19,7 @@ class PagePadding extends EdgeInsets {
   const PagePadding.bottom() : super.only(bottom: 8);
   const PagePadding.buttonContainer() : super.only(bottom: 8);
   const PagePadding.cryptoPageTop() : super.only(top: 12);
+  const PagePadding.bottom2Xl() : super.only(bottom: 16);
 
   //
 

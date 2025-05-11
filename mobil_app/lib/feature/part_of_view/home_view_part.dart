@@ -1,6 +1,9 @@
 part of '../view/home_view.dart';
 
-/// Header
+// part of '../view/home_view.dart';
+
+/// Header Widget
+/// Kullanıcının adını ve toplam bakiyesini gösteren minimal ve orantılı kart yapısı
 class _Header extends StatelessWidget {
   const _Header();
 
@@ -44,15 +47,99 @@ class _Header extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const PagePadding.all(),
-          child: Text(ProjectItemsString.money,
-              style: Theme.of(context).textTheme.headlineLarge),
+          padding: const PagePadding.bottom2Xl(),
+          child: backgroundWalletCard(context),
         ),
       ],
     );
   }
+
+  /// Cüzdan kartı bileşeni
+  /// Daha sade ve dengeli görünüm için optimize edildi.
+  Widget backgroundWalletCard(BuildContext context) {
+    return FutureBuilder<String?>(
+      future: _getUsername(),
+      builder: (context, snapshot) {
+        final userName = snapshot.data ?? "User";
+
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            gradient: const LinearGradient(
+              colors: [
+                AppColors.appBarColor,
+                AppColors.blueColor,
+                Color.fromARGB(255, 122, 182, 235)
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Hi, $userName",
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: AppColors.whiteColor,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      color: AppColors.whiteColor.withOpacity(0.15),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.wallet,
+                      size: 28,
+                      color: AppColors.whiteColor,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Toplam Bakiye",
+                        style: TextStyle(color: Colors.white70, fontSize: 12),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        "\$1,212",
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: AppColors.whiteColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<String?> _getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('username');
+  }
 }
 
+/// Popüler kısmının başlığı
 class _HeaderWithAddButton extends StatelessWidget {
   const _HeaderWithAddButton();
 
@@ -70,6 +157,7 @@ class _HeaderWithAddButton extends StatelessWidget {
   }
 }
 
+/// Artı butonu bileşeni
 class _AddStockButton extends StatelessWidget {
   const _AddStockButton();
 
@@ -87,8 +175,7 @@ class _AddStockButton extends StatelessWidget {
   }
 }
 
-///Body
-
+/// Ana gövde bileşeni
 class _HomeBody extends StatefulWidget {
   final List<StockModel> stockItems;
   final List<CoinModel> coinItems;
@@ -124,12 +211,10 @@ class _HomeBodyState extends State<_HomeBody> with CommandListTileMixin {
   }
 }
 
-/// Body Atomic
-
+/// Coin kartlarını listeleyen yatay scroll bileşeni
 class _CardListBuilder extends StatelessWidget {
-  const _CardListBuilder({
-    required List<CoinModel>? coinItems,
-  }) : _coinItems = coinItems;
+  const _CardListBuilder({required List<CoinModel>? coinItems})
+      : _coinItems = coinItems;
 
   final List<CoinModel>? _coinItems;
 
@@ -141,11 +226,9 @@ class _CardListBuilder extends StatelessWidget {
         height: AppStyles.cardSizedBox,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount:
-              (_coinItems?.length ?? 0) + 1, // sonuna bir item daha ekliyoruz
+          itemCount: (_coinItems?.length ?? 0) + 1,
           itemBuilder: (context, index) {
             if (index == _coinItems!.length) {
-              // + butonu
               return Padding(
                 padding: const PagePadding.horizontal(),
                 child: InkWell(
@@ -171,14 +254,15 @@ class _CardListBuilder extends StatelessWidget {
                     data: coin);
               },
               child: _CryptoCard(
-                  name: coin.name ?? 'N/A',
-                  price: '\$${coin.currentPrice?.toStringAsFixed(2) ?? '0.00'}',
-                  change:
-                      '${coin.priceChangePercentage24h?.toStringAsFixed(2) ?? '0.00'}%',
-                  imageUrl: coin.image ?? '',
-                  changeColor: (coin.priceChangePercentage24h ?? 0) >= 0
-                      ? AppColors.greenColor
-                      : AppColors.errorColor),
+                name: coin.name ?? 'N/A',
+                price: '\$${coin.currentPrice?.toStringAsFixed(2) ?? '0.00'}',
+                change:
+                    '${coin.priceChangePercentage24h?.toStringAsFixed(2) ?? '0.00'}%',
+                imageUrl: coin.image ?? '',
+                changeColor: (coin.priceChangePercentage24h ?? 0) >= 0
+                    ? AppColors.greenColor
+                    : AppColors.errorColor,
+              ),
             );
           },
         ),
@@ -187,6 +271,7 @@ class _CardListBuilder extends StatelessWidget {
   }
 }
 
+/// Coin kartı bileşeni
 class _CryptoCard extends StatelessWidget {
   const _CryptoCard({
     required this.name,

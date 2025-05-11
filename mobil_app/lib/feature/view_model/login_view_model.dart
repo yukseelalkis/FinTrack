@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:mobil_app/feature/model/login_model.dart';
 import 'package:mobil_app/feature/service/login_service.dart';
 import 'package:mobil_app/feature/view/home_view.dart';
@@ -52,6 +53,18 @@ abstract class LoginViewModel extends State<LoginView> {
       if (response != null && response.tokens != null) {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('user_token', response.tokens!);
+
+        final decodedToken = JwtDecoder.decode(response.tokens!);
+        print("Decoded Token: $decodedToken"); // ← EKLE
+
+        final userName = decodedToken['given_name'] ??
+            decodedToken['username'] ??
+            decodedToken['name'] ??
+            decodedToken['sub'];
+
+        if (userName != null && userName is String) {
+          await prefs.setString('username', userName);
+        }
 
         setState(() {
           token = response.tokens;
