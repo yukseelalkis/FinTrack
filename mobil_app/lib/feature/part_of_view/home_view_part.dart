@@ -1,6 +1,8 @@
 part of '../view/home_view.dart';
 
-//// Duzeltilmesi gereken cok kisim var burada 
+//// Duzeltilmesi gereken cok kisim var burada
+
+// part of '../view/home_view.dart';
 
 /// Header Widget
 /// Kullanıcının adını ve toplam bakiyesini gösteren minimal ve orantılı kart yapısı
